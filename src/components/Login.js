@@ -1,11 +1,14 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username:'', password:'' };
   }
-  
+  handleClick(){
+    
+  }
   render(){
     return(
       <div>
@@ -17,9 +20,8 @@ export default class Login extends React.Component {
         <br/>
         <p>{this.state.username}</p>
         <p>{this.state.password}</p>
-        <input type = "submit"/>
+        <Link to='/leaderboard'><input type='submit' onclick={this.handleClick}/></Link>
       </div>
     );
   }
 }
-
