@@ -1,13 +1,23 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 const axios = require('axios');
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username:'', password:'' };
+    this.state = { username:'', password:'', authenticated: false };
+    this.handleClick = this.handleClick.bind(this);
   }
-  
+  handleClick(){
+    axios.post('http://localhost/othscmsbackend/login.php',
+            {
+              username: this.state.username,
+              password: this.state.password,
+            })
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+  }
   render(){
     return(
       <div>
@@ -19,18 +29,9 @@ export default class Login extends React.Component {
         <br/>
         <p>{this.state.username}</p>
         <p>{this.state.password}</p>
-        <input type = "submit" 
-          onClick = {() => 
-            axios.post('http://localhost/othscmsbackend/login.php',
-            {
-              username: this.state.username,
-              password: this.state.password,
-            })
-            .then(result => console.log(result))
-            .catch(error => console.log(error))
-          }/>
+
+        <Link to='/leaderboard'><input type='submit' onClick={this.handleClick}/></Link>
       </div>
     );
   }
 }
-

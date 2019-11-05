@@ -6,8 +6,13 @@
     "axios": "^0.19.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+<<<<<<< HEAD
     "react-scripts": "3.2.0",
     "typescript": "^3.6.4"
+=======
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0"
+>>>>>>> de85d926f896c7b0f9f512bbc7bb082851eff91d
   },
   "scripts": {
     "start": "react-scripts start",
