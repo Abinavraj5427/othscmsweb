@@ -9,15 +9,18 @@ export default class Login extends React.Component {
     this.state = { username:'', password:'', authenticated: false };
     this.handleClick = this.handleClick.bind(this);
   }
+  
   handleClick(){
-    axios.post('http://localhost/othscmsbackend/login.php',
-            {
-              username: this.state.username,
-              password: this.state.password,
-            })
-            .then(result => console.log(result))
-            .catch(error => console.log(error))
+    axios({
+        method: 'post',
+        url: 'http://localhost/othscmsbackend/login.php',
+        data: {
+          username: this.state.username,
+          password: this.state.password,
+        },
+    }) .then((res) => console.log(res));
   }
+
   render(){
     let button = '/';
     if(this.state.authenticated)button = '/leaderboard';
