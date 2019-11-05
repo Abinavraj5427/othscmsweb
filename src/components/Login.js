@@ -1,5 +1,7 @@
 import React from 'react';
 
+const axios = require('axios');
+
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,16 @@ export default class Login extends React.Component {
         <br/>
         <p>{this.state.username}</p>
         <p>{this.state.password}</p>
-        <input type = "submit"/>
+        <input type = "submit" 
+          onClick = {() => 
+            axios.post('http://localhost/othscmsbackend/login.php',
+            {
+              username: this.state.username,
+              password: this.state.password,
+            })
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+          }/>
       </div>
     );
   }
