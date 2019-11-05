@@ -26,10 +26,6 @@ export default class Leaderboard extends React.Component {
   }
 
   render(){
-    let display = <p></p>;
-    if(this.state.shouldDisplay){
-      display = <div><p>{this.state.username}</p><p>{this.state.password}</p></div>;
-    }
     this.state.teams.sort((a, b) => (a.points<b.points) ? 1: -1);
     let leaderboad = this.state.teams.map((team, idx) => (
       <li>{team.name}: {team.points}</li>
