@@ -18,7 +18,8 @@ export default class Login extends React.Component {
           username: this.state.username,
           password: this.state.password,
         },
-    }) .then((res) => console.log(res));
+    }) .then((res) => console.log(res.data))
+    .catch(error => console.log(error))
   }
 
   render(){
