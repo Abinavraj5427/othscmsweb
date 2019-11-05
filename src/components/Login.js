@@ -5,9 +5,10 @@ export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username:'', password:'' };
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick(){
-    
+
   }
   render(){
     return(
