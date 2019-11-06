@@ -9,9 +9,7 @@ export default class Login extends React.Component {
     this.state = { username:'', password:'', response: '',authenticated:false };
     this.handleClick = this.handleClick.bind(this);
   }
-  
   handleClick(){
-<<<<<<< HEAD
     axios.post('http://localhost/othscmsbackend/login.php',
             {
               username: this.state.username,
@@ -26,20 +24,9 @@ export default class Login extends React.Component {
             .catch(error => console.log(error));
 
 
-=======
-    axios({
-        method: 'post',
-        url: 'http://localhost/othscmsbackend/login.php',
-        data: {
-          username: this.state.username,
-          password: this.state.password,
-        },
-    }) .then((res) => console.log(res.data))
-    .catch(error => console.log(error))
->>>>>>> dbd210906993ae5b410e1facba50c432f15c6091
   }
-
   render(){
+
     return(
       <div>
         <h1>Login</h1>
