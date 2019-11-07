@@ -30,7 +30,7 @@ export default class Leaderboard extends React.Component {
   render(){
     this.state.teams.sort((a, b) => (a.points<b.points) ? 1: -1);
     let leaderboad = this.state.teams.map((team, idx) => (
-      <li>{team.name}: {team.points}</li>
+      <li key={team.name}>{team.name}: {team.points}</li>
     ));
     return(
       
