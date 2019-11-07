@@ -1,4 +1,6 @@
 import React from 'react';
+import Navigation from './Navigation';
+
 
 export default class Leaderboard extends React.Component {
   constructor(props) {
@@ -31,9 +33,13 @@ export default class Leaderboard extends React.Component {
       <li>{team.name}: {team.points}</li>
     ));
     return(
+      
+      <div>
+      <Navigation />
       <div>
         <h1>Leaderboard</h1>
         <ol>{leaderboad}</ol>
+      </div>
       </div>
     );
   }

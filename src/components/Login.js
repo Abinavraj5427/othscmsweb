@@ -23,9 +23,13 @@ export default class Login extends React.Component {
   }
 
   render(){
+    
+   
+   
     let button = '/';
     if(this.state.authenticated)button = '/leaderboard';
-    return(
+    return(  
+      
       <div>
         <h1>Login</h1>
         <br/>
@@ -33,11 +37,15 @@ export default class Login extends React.Component {
         <br/>
         <input placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
         <br/>
+        
         <p>{this.state.username}</p>
         <p>{this.state.password}</p>
 
         <Link to={button}><input type='submit' onClick={this.handleClick}/></Link>
       </div>
+      
+      
     );
+    
   }
 }
