@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Link, Redirect} from 'react-router-dom';
+import cookie from 'react-cookies';
 
 const axios = require('axios');
 
@@ -18,8 +19,9 @@ export default class Login extends React.Component {
             .then(result => {
 
               this.setState({authenticated:result.data.authenticated});
-              console.log(this.state.authenticated);
+              cookie.save('auth-token', result.data.auth_key);
               console.log(result);
+              console.log(cookie.load('auth-token'));
             })
             .catch(error => console.log(error));
   }
