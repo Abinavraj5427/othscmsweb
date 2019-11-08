@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from './Navigation';
-import cookie from 'react-cookies';
 
 
 export default class Leaderboard extends React.Component {
@@ -34,7 +33,7 @@ export default class Leaderboard extends React.Component {
       <li key={team.name}>{team.name}: {team.points}</li>
     ));
     return(
-      
+
       <div>
       <Navigation />
       <div>
@@ -42,7 +41,6 @@ export default class Leaderboard extends React.Component {
         <ol>{leaderboad}</ol>
       </div>
 
-      <input type = "submit" value = "LOGOUT" onClick = {() => {cookie.remove('auth-token'); console.log(cookie.load('auth-token'))}}></input>
       </div>
     );
   }

@@ -37,7 +37,7 @@ export default class Login extends React.Component {
 
         <p>{this.state.username}</p>
         <p>{this.state.password}</p>
-        {this.state.authenticated && <Redirect push to='/leaderboard' />}
+        {this.state.authenticated && <Redirect push to='/home' />}
         <input type='submit' onClick={this.handleClick}/>
       </div>
     );
