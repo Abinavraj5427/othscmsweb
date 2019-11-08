@@ -17,13 +17,11 @@ export default class Login extends React.Component {
             })
             .then(result => {
 
-              if(result.data=='success')this.setState({authenticated:true});
+              this.setState({authenticated:result.data.authenticated});
               console.log(this.state.authenticated);
               console.log(result);
             })
             .catch(error => console.log(error));
-
-
   }
   render(){
 
