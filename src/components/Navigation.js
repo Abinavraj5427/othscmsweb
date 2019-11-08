@@ -7,7 +7,7 @@ import FormControl from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-    
+
 class Navigation extends React.PureComponent
 {
     render()
@@ -25,7 +25,7 @@ class Navigation extends React.PureComponent
                     </Nav>
 
                     <Nav pullRight className="ml-auto">
-                        <Nav.Link href="#">Account</Nav.Link>  
+                        <Nav.Link href="/Account">Account</Nav.Link>  
                     </Nav>
 
                 </Navbar>
@@ -39,7 +39,7 @@ class Navigation extends React.PureComponent
                     <Navbar.Brand href="/home">Home</Navbar.Brand>
 
                     <Nav pullRight className="ml-auto">
-                        <Nav.Link href="/Login">Log In</Nav.Link>  
+                        <Nav.Link href="/Login">Log In</Nav.Link>
                     </Nav>
 
                 </Navbar>
