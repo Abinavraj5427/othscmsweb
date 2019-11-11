@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
-
+const axios = require('axios');
 
 export default class Leaderboard extends React.Component {
   constructor(props) {
@@ -25,6 +25,13 @@ export default class Leaderboard extends React.Component {
 
   handleClick(){
     this.setState(state => ({shouldDisplay:!state.shouldDisplay}));
+  }
+
+  componentDidMount(){
+    axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
+      let obj = JSON.parse(result.data);
+      console.log(obj);
+    }).catch(error => console.log(error));
   }
 
   render(){

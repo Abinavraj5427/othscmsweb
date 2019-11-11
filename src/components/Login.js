@@ -50,6 +50,7 @@ export default class Login extends React.Component {
           <br/>
           <input placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
           <br/>
+          {this.state.authenticated && <Redirect push to="/home" />}
           <input type = "submit" onClick = {() => {this.handleClick()}}/>
         </div>
       //</div>
