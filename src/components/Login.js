@@ -13,6 +13,14 @@ export default class Login extends React.Component {
 
   componentDidMount(){
     console.log(cookie.load('auth-token'));
+    axios.get('http://localhost/othscmsbackend/confirmlogin.php',
+      {
+        token: cookie.load('auth-token'),
+      })
+      .then(result => {
+        this.setState({authenticated: result.data.authenticated});
+        console.log(result.data.authenticated);
+      })
   }
 
   handleClick(){
