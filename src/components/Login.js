@@ -36,21 +36,25 @@ export default class Login extends React.Component {
             })
             .catch(error => console.log(error));
   }
-  render(){
-    return(
-      <div>
-        <h1>Login</h1>
-        <br/>
-        <input placeholder = "Username" value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
-        <br/>
-        <input type= "password" placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
-        <br/>
 
-        <p>{this.state.username}</p>
-        <p>{this.state.password}</p>
-        {this.state.authenticated && <Redirect push to='/home' />}
-        <input type='submit' onClick={this.handleClick}/>
+  render(){
+
+    return(
+
+      <div class="blurred-box">
+        <div>
+          <h1>Login</h1>
+          <br/>
+          <input placeholder = "Username" value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
+          <br/>
+          <input placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
+          <br/>
+          <p>{this.state.username}</p>
+          <p>{this.state.password}</p>
+          <input type = "submit"/>
+        </div>
       </div>
+
     );
   }
 }
