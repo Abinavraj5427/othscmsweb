@@ -11,17 +11,17 @@ export default class Login extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount(){
-    console.log(cookie.load('auth-token'));
-    axios.get('http://localhost/othscmsbackend/confirmlogin.php',
-      {
-        token: cookie.load('auth-token'),
-      })
-      .then(result => {
-        this.setState({authenticated: result.data.authenticated});
-        console.log(result.data.authenticated);
-      })
-  }
+  // componentDidMount(){
+  //   console.log(cookie.load('auth-token'));
+  //   axios.get('http://localhost/othscmsbackend/confirmlogin.php',
+  //     {
+  //       token: cookie.load('auth-token'),
+  //     })
+  //     .then(result => {
+  //       this.setState({authenticated: result.data.authenticated});
+  //       console.log(result.data.authenticated);
+  //     })
+  // }
 
   handleClick(){
     axios.post('http://localhost/othscmsbackend/login.php',
