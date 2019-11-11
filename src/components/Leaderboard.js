@@ -29,8 +29,9 @@ export default class Leaderboard extends React.Component {
 
   componentDidMount(){
     axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
-      let obj = JSON.parse(result.data);
-      console.log(obj);
+      let teams = result.data.split("/");
+      let obj = JSON.parse(teams[1]);
+      console.log(obj.member3);
     }).catch(error => console.log(error));
   }
 
