@@ -10,6 +10,11 @@ export default class Login extends React.Component {
     this.state = { username:'', password:'', response: '',authenticated:false };
     this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidMount(){
+    console.log(cookie.load('auth-token'));
+  }
+
   handleClick(){
     axios.post('http://localhost/othscmsbackend/login.php',
             {
@@ -17,11 +22,9 @@ export default class Login extends React.Component {
               password: this.state.password,
             })
             .then(result => {
-
               this.setState({authenticated:result.data.authenticated});
               cookie.save('auth-token', result.data.auth_key);
               console.log(result);
-              console.log(cookie.load('auth-token'));
             })
             .catch(error => console.log(error));
   }
