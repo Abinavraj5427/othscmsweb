@@ -33,6 +33,7 @@ export default class Login extends React.Component {
               this.setState({authenticated:result.data.authenticated});
               cookie.save('auth-token', result.data.auth_key);
               console.log(result);
+              console.log(cookie.load('auth-token'));
             })
             .catch(error => console.log(error));
   }
@@ -49,7 +50,7 @@ export default class Login extends React.Component {
           <br/>
           <input placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
           <br/>
-          <input type = "submit"/>
+          <input type = "submit" onClick = {() => {this.handleClick()}}/>
         </div>
       //</div>
 
