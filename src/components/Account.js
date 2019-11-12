@@ -3,7 +3,7 @@ import Navigation from './Navigation';
 import Button from 'react-bootstrap/Button';
 import cookie from 'react-cookies';
 import {BrowserRouter as Link, Redirect} from 'react-router-dom';
-
+const axios = require('axios');
 
 export default class Account extends React.Component
 {
@@ -17,9 +17,19 @@ export default class Account extends React.Component
     this.handleLogout =this.handleLogout.bind(this);
   }
 
+  componentDidMount(){
+    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+      {
+        authtoken: cookie.load('auth-token'),
+      })
+      .then(result => {
+        console.log(result);
+        this.setState({authenticated: result.data.authenticated});
+      })
+  }
+
   handleLogout(){
     cookie.remove('auth-token'); 
-    console.log(cookie.load('auth-token'))
     this.setState({authenticated: false});
   }
 

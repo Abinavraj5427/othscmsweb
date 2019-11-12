@@ -11,17 +11,18 @@ export default class Login extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount(){
-  //   console.log(cookie.load('auth-token'));
-  //   axios.get('http://localhost/othscmsbackend/confirmlogin.php',
-  //     {
-  //       token: cookie.load('auth-token'),
-  //     })
-  //     .then(result => {
-  //       this.setState({authenticated: result.data.authenticated});
-  //       console.log(result.data.authenticated);
-  //     })
-  // }
+  componentDidMount(){
+    var token = cookie.load('auth-token');
+    cookie.load('auth-token') &&
+    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+      {
+        authtoken: token,
+      })
+      .then(result => {
+        console.log(result);
+        this.setState({authenticated: result.data.authenticated});
+      }).catch(error => console.log(error))
+  }
 
   handleClick(){
     axios.post('http://localhost/othscmsbackend/login.php',
@@ -30,10 +31,9 @@ export default class Login extends React.Component {
               password: this.state.password,
             })
             .then(result => {
+              console.log(result);
               this.setState({authenticated:result.data.authenticated});
               cookie.save('auth-token', result.data.auth_key);
-              console.log(result);
-              console.log(cookie.load('auth-token'));
             })
             .catch(error => console.log(error));
   }
