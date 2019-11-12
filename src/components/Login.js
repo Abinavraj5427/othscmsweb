@@ -43,15 +43,17 @@ export default class Login extends React.Component {
     return(
 
       <div class="blurred-box">
-        <div style = {loginstyles}>
-          <h1>Login</h1>
-          <br/>
-          <input placeholder = "Username" value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
-          <br/>
-          <input placeholder = "Password" value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
-          <br/>
-          {this.state.authenticated && <Redirect push to="/home" />}
-          <input type = "submit" onClick = {() => {this.handleClick()}}/>
+        <div class="user-login-box">
+          <div style = {loginstyles}>
+            <h1>Login</h1>
+            <br/>
+            <input placeholder = "Username" type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
+            <br/>
+            <input placeholder = "Password" type = 'text' value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
+            <br/>
+            {this.state.authenticated && <Redirect push to="/home" />}
+            <input type = "submit" onClick = {() => {this.handleClick()}}/>
+          </div>
         </div>
       </div>
 
