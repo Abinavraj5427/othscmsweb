@@ -9,7 +9,7 @@ html{
     height: 100vh;
 }
 
-body {
+.login-styling {
   background: url("212677.jpg")no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -35,12 +35,15 @@ body {
   top: calc(50% - 175px);
   left: calc(50% - 125px);
   background: inherit;
-  border-radius: 2px;
+  border-radius: 4px;
   overflow: hidden;
+  content:'';
+  box-shadow: inset 200px 200px 200px 200px rgba(255,255,255,0.5);
+  /* filter: blur(1px); */
 }
 
 .blurred-box:after{
- content:'';
+  content:'';
  width: 300px;
  height: 300px;
  background: inherit;
@@ -49,8 +52,7 @@ body {
  right: 0;
  top: -25px;
  bottom: 0;
- box-shadow: inset 200px 200px 200px 200px rgba(255,255,255,0.5);
- filter: blur(20px);
+ filter: blur(5px);
  opacity: 1;
 }
 

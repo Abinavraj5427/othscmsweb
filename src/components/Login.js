@@ -41,7 +41,7 @@ export default class Login extends React.Component {
   render(){
 
     return(
-
+      <div class = "login-styling">
       <div class="blurred-box">
         <div class="user-login-box">
           <div style = {loginstyles}>
@@ -56,7 +56,7 @@ export default class Login extends React.Component {
           </div>
         </div>
       </div>
-
+      </div>
     );
   }
 }
