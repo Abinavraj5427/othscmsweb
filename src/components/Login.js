@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Link, Redirect} from 'react-router-dom';
 import cookie from 'react-cookies';
-import './Login.css';
+import loginstyles from './Login.css';
 const axios = require('axios');
 
 export default class Login extends React.Component {
@@ -42,8 +42,8 @@ export default class Login extends React.Component {
 
     return(
 
-      //<div class="blurred-box">
-        <div>
+      <div class="blurred-box">
+        <div style = {loginstyles}>
           <h1>Login</h1>
           <br/>
           <input placeholder = "Username" value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
           {this.state.authenticated && <Redirect push to="/home" />}
           <input type = "submit" onClick = {() => {this.handleClick()}}/>
         </div>
-      //</div>
+      </div>
 
     );
   }
