@@ -38,7 +38,8 @@ html{
   border-radius: 4px;
   overflow: hidden;
   content:'';
-  box-shadow: inset 200px 200px 200px 200px rgba(255,255,255,0.5);
+  box-shadow: inset 200px 200px 200px 200px rgba(200,200,200,0.5);
+  filter: blur(1px);
   /* filter: blur(1px); */
 }
 
@@ -51,6 +52,7 @@ html{
  right: 0;
  top: -25px;
  bottom: 0;
+ z-index: -1;
 }
 
 
@@ -58,7 +60,28 @@ html{
   position: relative;
   margin-top: 50px;
   text-align: center;
+  z-index: -1;
+}
+
+input.username{
+  width: 200px;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  margin: 5px;
   z-index: 1;
+}
+
+input.password{
+  width: 200px;
+  height: 30px;
+  opacity: 0.4;
+  border-radius: 2px;
+  padding: 5px 15px;
+  border: 0;
+  margin: 5px;
 }
 
 /* .container {
