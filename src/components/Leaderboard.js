@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import {BrowserRouter as Link, Redirect} from 'react-router-dom';
 const axios = require('axios');
 
 export default class Leaderboard extends React.Component {
@@ -43,6 +44,7 @@ export default class Leaderboard extends React.Component {
     return(
 
       <div>
+              {!this.state.authenticated && <Redirect push to="/" />}
       <Navigation />
       <div>
         <h1>Leaderboard</h1>

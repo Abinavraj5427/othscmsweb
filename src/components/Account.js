@@ -18,6 +18,7 @@ export default class Account extends React.Component
   }
 
   componentDidMount(){
+
     axios.post('http://localhost/othscmsbackend/confirmlogin.php',
       {
         authtoken: cookie.load('auth-token'),
