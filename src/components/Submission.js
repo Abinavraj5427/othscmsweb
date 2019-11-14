@@ -1,16 +1,20 @@
 import React from 'react';
 import Navigation from './Navigation';
 import Button from 'react-bootstrap/Button';
+import {BrowserRouter as Link, Redirect} from 'react-router-dom';
+import cookie from 'react-cookies';
+const axios = require('axios');
 
 
 
-export default class Home extends React.Component 
+export default class Submission extends React.Component 
 {
     
-  constructor(props) {
+  constructor(props) 
+  {
     super(props);
     this.state = {
-      authenticated: this.props.authenticated,
+        authenticated: this.props.authenticated,
     }
   }
 
@@ -18,12 +22,14 @@ export default class Home extends React.Component
     this.props.autoLogin();
   }
 
-  render(){
+  render()
+  {
     return(
         <div>
             <Navigation/>   
             <div>
-                <p>Welcome to the OTHS UIL Site</p>
+                {!this.state.authenticated && <Redirect push to="/" />}
+                <p>Submission</p>
                  <p>If you haven't already, please log in to access all features</p>
             </div>
         </div>   

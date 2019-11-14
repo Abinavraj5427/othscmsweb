@@ -7,21 +7,13 @@ const axios = require('axios');
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username:'', password:'', response: '',authenticated:false };
+    this.state = { username:'', password:'', response: '',authenticated:this.props.authenticated };
     this.handleClick = this.handleClick.bind(this);
+    console.log(this.props.authenticated + " "+this.state.authenticated);
   }
 
   componentDidMount(){
-    var token = cookie.load('auth-token');
-    cookie.load('auth-token') &&
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
-      {
-        authtoken: token,
-      })
-      .then(result => {
-        console.log(result);
-        this.setState({authenticated: result.data.authenticated});
-      }).catch(error => console.log(error))
+    this.props.autoLogin();
   }
 
   handleClick(){
@@ -39,9 +31,8 @@ export default class Login extends React.Component {
   }
 
   render(){
-
+    console.log(this.state.authenticated);
     return(
-      
       <div class = "login-styling">
       <div class="blurred-box">
         <div class="user-login-box">

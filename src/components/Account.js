@@ -5,28 +5,17 @@ import cookie from 'react-cookies';
 import {BrowserRouter as Link, Redirect} from 'react-router-dom';
 const axios = require('axios');
 
-export default class Account extends React.Component
-{
-
-  constructor(props)
-  {
+export default class Account extends React.Component{
+  constructor(props){
     super(props);
     this.state = {
-      authenticated: true,
+      authenticated: this.props.authenticated,
     }
     this.handleLogout =this.handleLogout.bind(this);
   }
 
   componentDidMount(){
-
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
-      {
-        authtoken: cookie.load('auth-token'),
-      })
-      .then(result => {
-        console.log(result);
-        this.setState({authenticated: result.data.authenticated});
-      })
+    this.props.autoLogin();
   }
 
   handleLogout(){
@@ -43,7 +32,6 @@ export default class Account extends React.Component
                 <h2>Account</h2>
                 {!this.state.authenticated && <Redirect push to="/" />}
                 <input type = "submit" value = "LOGOUT" onClick = {() => {this.handleLogout()}}></input>
-
             </div>
         </div>
     );

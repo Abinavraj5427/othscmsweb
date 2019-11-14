@@ -21,7 +21,11 @@ class Navigation extends React.PureComponent
                     <Navbar.Brand href="/home">Home</Navbar.Brand>
 
                     <Nav className="mr-auto">
-                        <Nav.Link href="/Leaderboard">Leaderboards</Nav.Link>
+                        <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
+                    </Nav>
+
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/submit">Submission</Nav.Link>
                     </Nav>
 
                     <Nav pullRight className="ml-auto">

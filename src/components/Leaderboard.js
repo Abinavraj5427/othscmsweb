@@ -10,6 +10,7 @@ export default class Leaderboard extends React.Component {
     this.state = { username:'',
       password:'',
       shouldDisplay:false,
+      authenticated: this.props.authenticated,
       teams:[
         {
           name:'Team 1',
@@ -23,6 +24,7 @@ export default class Leaderboard extends React.Component {
          ]
         };
     this.handleClick = this.handleClick.bind(this);
+    this.pullData = this.pullData.bind(this);
   }
 
   handleClick(){
@@ -30,19 +32,15 @@ export default class Leaderboard extends React.Component {
   }
 
   componentDidMount(){
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
-    {
-      authtoken: cookie.load('auth-token'),
-    })
-    .then(result => {
-      console.log(result);
-      this.setState({authenticated: result.data.authenticated});
-    })
-    axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
-      let teams = result.data.split("/");
-      let obj = JSON.parse(teams[1]);
-      console.log(obj.member3);
-    }).catch(error => console.log(error));
+    this.props.autoLogin();
+  }
+
+  pullData(){
+    // axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
+    //   let teams = result.data.split("/");
+    //   let obj = JSON.parse(teams[1]);
+    //   console.log(obj.member3);
+    // }).catch(error => console.log(error));
   }
 
   render(){
@@ -53,13 +51,12 @@ export default class Leaderboard extends React.Component {
     return(
 
       <div>
-              {!this.state.authenticated && console.log(!this.state.authenticated)&&<Redirect push to="/" />}
+      {!this.state.authenticated && <Redirect push to="/" />}
       <Navigation />
-      <div>
-        <h1>Leaderboard</h1>
-        <ol>{leaderboad}</ol>
-      </div>
-
+        <div>
+          <h1>Leaderboard</h1>
+          <ol>{leaderboad}</ol>
+        </div>
       </div>
     );
   }
