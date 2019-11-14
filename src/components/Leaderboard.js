@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import {BrowserRouter as Link, Redirect} from 'react-router-dom';
+import cookie from 'react-cookies';
 const axios = require('axios');
 
 export default class Leaderboard extends React.Component {
@@ -29,6 +30,14 @@ export default class Leaderboard extends React.Component {
   }
 
   componentDidMount(){
+    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    {
+      authtoken: cookie.load('auth-token'),
+    })
+    .then(result => {
+      console.log(result);
+      this.setState({authenticated: result.data.authenticated});
+    })
     axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
       let teams = result.data.split("/");
       let obj = JSON.parse(teams[1]);
@@ -44,7 +53,7 @@ export default class Leaderboard extends React.Component {
     return(
 
       <div>
-              {!this.state.authenticated && <Redirect push to="/" />}
+              {!this.state.authenticated && console.log(!this.state.authenticated)&&<Redirect push to="/" />}
       <Navigation />
       <div>
         <h1>Leaderboard</h1>
