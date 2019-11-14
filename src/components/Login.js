@@ -41,22 +41,22 @@ export default class Login extends React.Component {
   render(){
 
     return(
-      
+
       <div class = "login-styling">
-      <div class="blurred-box">
-        <div class="user-login-box">
-          <div style = {loginstyles}>
-            <h1>Login</h1>
-            <br/>
-            <input class="username" placeholder = "Username" style = {{margin: 10}} type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
-            <br/>
-            <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
-            <br/>
-            {this.state.authenticated && <Redirect push to="/home" />}
-            <input type = "submit" onClick = {() => {this.handleClick()}}/>
+        <div class="blurred-box"></div>
+          <div class="user-login-box">
+            <div style = {loginstyles}>
+              <h1>Login</h1>
+              <br/>
+              <input class="username" placeholder = "Username" style = {{margin: 10}} type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})}/>
+              <br/>
+              <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
+              <br/>
+              {this.state.authenticated && <Redirect push to="/home" />}
+              <input type = "submit" onClick = {() => {this.handleClick()}}/>
+            </div>
           </div>
-        </div>
-      </div>
+
       </div>
     );
   }
