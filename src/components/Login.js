@@ -54,8 +54,10 @@ export default class Login extends React.Component {
               <br/>
               {this.state.authenticated && <Redirect push to="/home" />}
             {/*<input type = "submit" onClick = {() => {this.handleClick()}}/>*/}
-            <input class="button" type="image"  src={require('./entericon.jpg')}  height="25" width="25"/>
 
+            <form action= {this.handleClick()}>
+              <input class="button" type="image"  src={require('./entericon.jpg')}  height="25" width="25"/>
+            </form>
 
             </div>
           </div>

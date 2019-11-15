@@ -19,7 +19,7 @@ html{
   height: 100%;
 
 
-  padding: 330px;
+  padding: 310px;
   font-family: "Rubik","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
    font-weight: 900;
   text-align: center;
@@ -27,12 +27,12 @@ html{
 
 .blurred-box{
   position: relative;
-  width: 250px;
-  height: 350px;
-  top: calc(50% - 175px);
-  left: calc(50% - 125px);
+  width: 400px;
+  height: 400px;
+  top: calc(50% - 200px);
+  left: calc(50% - 200px);
   background: inherit;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
   margin-top: -100px;
   margin-bottom: 80px;
@@ -40,19 +40,20 @@ html{
 
 .blurred-box:after{
  content: '';
- width: 400px;
- height: 400px;
+ width: 450px;
+ height: 450px;
  background: inherit;
  position: absolute;
- margin-left: -200px;
- box-shadow: inset 0 0 0 200px rgba(255,255,255,.05);
- filter: blur(5px);
+ margin-left: -220px;
+ margin-right: -200px;
+ box-shadow: inset 0 0 0 200px rgba(255,255,255,.1);
+ filter: blur(10px);
 }
 
 
 .user-login-box{
   position: relative;
-  margin-top: -360px;
+  margin-top: -380px;
   margin-bottom: 80px;
   text-align: center;
   z-index: 1;
