@@ -28,7 +28,6 @@ export default class Submission extends React.Component
         <div>
             <Navigation/>   
             <div>
-                {!this.state.authenticated && <Redirect push to="/" />}
                 <p>Submission</p>
                  <p>If you haven't already, please log in to access all features</p>
             </div>

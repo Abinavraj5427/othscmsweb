@@ -30,7 +30,7 @@ export default class Account extends React.Component{
             <Navigation/>
             <div>
                 <h2>Account</h2>
-                {!this.state.authenticated && <Redirect push to="/" />}
+                {!this.props.authenticated && <Redirect push to="/" />}
                 <input type = "submit" value = "LOGOUT" onClick = {() => {this.handleLogout()}}></input>
             </div>
         </div>

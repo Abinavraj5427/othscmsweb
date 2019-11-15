@@ -49,9 +49,7 @@ export default class Leaderboard extends React.Component {
       <li key={team.name}>{team.name}: {team.points}</li>
     ));
     return(
-
       <div>
-      {!this.state.authenticated && <Redirect push to="/" />}
       <Navigation />
         <div>
           <h1>Leaderboard</h1>
