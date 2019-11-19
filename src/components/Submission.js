@@ -27,7 +27,8 @@ export default class Submission extends React.Component
   componentDidMount(){
     this.props.autoLogin();
     this.getProblems();
-    this.setState({problemVal: this.state.problems[0]});
+    this.setUser();
+    this.setState({problemVal: this.state.problems[0].problem});
   }
 
   saveFile = (event) => {
@@ -38,6 +39,7 @@ export default class Submission extends React.Component
     axios.post('http://localhost/othscmsbackend/upload.php', {
       file: this.state.file,
       problem: this.state.problemVal,
+      team: this.state.user,
     }).then(result=>{
       console.log(result);
     }).catch(error => console.log(error));
@@ -45,9 +47,18 @@ export default class Submission extends React.Component
 
   getProblems(){
     axios.post('http://localhost/othscmsbackend/get_problems.php',{})
-    .then(result => {
-      this.setState({problems: result});
+    .then(result => {console.log(result);
+      this.setState({problems: result.data});
     })
+    .catch(error => console.log(error));
+  }
+
+  setUser(){
+    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    {
+      token: cookie.load('auth-token'),
+    })
+    .then(result => {this.setState({user: result['user']})})
     .catch(error => console.log(error));
   }
 
@@ -62,7 +73,7 @@ export default class Submission extends React.Component
                 <select onChange  = {(e) => this.setState({problemVal: e.target.value})}>
                   {
                     this.state.problems.map(problem => 
-                      <option value = {problem}>{problem}</option>
+                      <option value = {problem.problem}>{problem.problem}</option>
                     )
                   }
                 </select>
