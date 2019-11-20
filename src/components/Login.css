@@ -15,8 +15,8 @@ html{
   background-size: cover;
   background-attachment: fixed;
 
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
 
   padding: 310px;
@@ -34,7 +34,7 @@ html{
   background: inherit;
   border-radius: 10px;
   overflow: hidden;
-  margin-top: -100px;
+  margin-top: -20px;
   margin-bottom: 80px;
 }
 
@@ -53,10 +53,8 @@ html{
 
 .user-login-box{
   position: relative;
-  margin-top: -380px;
-  margin-bottom: 80px;
+  margin-top: -420px;
   text-align: center;
-  z-index: 1;
 
 
 }
