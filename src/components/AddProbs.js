@@ -43,7 +43,10 @@ export default class AddProbs extends React.Component
                 <ul>
                     {
                         this.state.problems.map(problem => 
-                            <li>{problem.problem}</li>
+                            <div>
+                                <li>{problem.problem}</li>
+                                <input type = 'submit' value = "DELETE"/>
+                            </div>
                         )
                     }
                 </ul>

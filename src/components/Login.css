@@ -28,7 +28,7 @@ html{
 .blurred-box{
   position: relative;
   width: 40%;
-  height: 130%;
+  height: 50vh;
   top: calc(-13%);
   left: calc(30%);
   background: inherit;
