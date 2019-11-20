@@ -27,10 +27,10 @@ html{
 
 .blurred-box{
   position: relative;
-  width: 400px;
-  height: 400px;
-  top: calc(50% - 200px);
-  left: calc(50% - 200px);
+  width: 40%;
+  height: 130%;
+  top: calc(-13%);
+  left: calc(30%);
   background: inherit;
   border-radius: 10px;
   overflow: hidden;
