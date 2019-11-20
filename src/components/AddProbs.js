@@ -39,6 +39,10 @@ export default class AddProbs extends React.Component
             <div>
                 <h1>Add Problems</h1>
                 <hr/>
+                <h2>New Problem</h2>
+                <input type = "text"/>
+                <input type = 'submit' value = "Add Problem"/>
+
                 <h2>Problem List</h2>
                 <ul>
                     {
@@ -50,6 +54,7 @@ export default class AddProbs extends React.Component
                         )
                     }
                 </ul>
+                
             </div>
         </div>   
     );
