@@ -16,7 +16,7 @@ export default class Submission extends React.Component
     this.state = {
         authenticated: this.props.authenticated,
         file: undefined,
-        problems: ["Problem 1", "Problem 2", "Problem 3"],
+        problems: [""],
         problemVal:undefined,
     }
     this.saveFile = this.saveFile.bind(this);
@@ -47,7 +47,7 @@ export default class Submission extends React.Component
 
   getProblems(){
     axios.post('http://localhost/othscmsbackend/get_problems.php',{})
-    .then(result => {console.log(result);
+    .then(result => {
       this.setState({problems: result.data});
     })
     .catch(error => console.log(error));

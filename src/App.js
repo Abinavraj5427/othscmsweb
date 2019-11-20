@@ -5,6 +5,7 @@ import Leaderboard from './components/Leaderboard';
 import Account from './components/Account';
 import Home from './components/Home';
 import Submission from './components/Submission';
+import AddProbs from './components/AddProbs';
 import cookie from 'react-cookies';
 const axios = require('axios');
 
@@ -34,6 +35,7 @@ export default class App extends React.Component {
     return(
       <Router>
         <Switch>
+          <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
