@@ -33,27 +33,33 @@ export default class Leaderboard extends React.Component {
 
   componentDidMount(){
     this.props.autoLogin();
+    this.pullData();
   }
 
   pullData(){
-    // axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
-    //   let teams = result.data.split("/");
-    //   let obj = JSON.parse(teams[1]);
-    //   console.log(obj.member3);
-    // }).catch(error => console.log(error));
+    axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
+      this.setState({teams:result.data});
+      console.log(result.data);
+    }).catch(error => console.log(error));
   }
 
   render(){
-    this.state.teams.sort((a, b) => (a.points<b.points) ? 1: -1);
-    let leaderboad = this.state.teams.map((team, idx) => (
-      <li key={team.name}>{team.name}: {team.points}</li>
-    ));
+    let list = [];
+    for(let [key, value] of Object.entries(this.state.teams)){
+      list.push({id:key, school:value.school, score:value.score});
+      list.sort((a,b) => a.score>b.score ? -1: 1);
+    }
+    let leaderboard;
+    for(let i = 0; i<list.length; i++){
+      leaderboard = <ul> {leaderboard} <li key ={list[i].id}> {list[i].school} {list[i].id} : {list[i].score}</li></ul>;
+    }
+  
     return(
       <div>
       <Navigation />
         <div>
           <h1>Leaderboard</h1>
-          <ol>{leaderboad}</ol>
+          {leaderboard}
         </div>
       </div>
     );
