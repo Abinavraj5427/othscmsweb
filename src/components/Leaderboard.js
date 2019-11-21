@@ -39,6 +39,7 @@ export default class Leaderboard extends React.Component {
   pullData(){
     axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
       this.setState({teams:result.data});
+      console.log(result.data);
     }).catch(error => console.log(error));
   }
 

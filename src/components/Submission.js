@@ -16,7 +16,7 @@ export default class Submission extends React.Component
     this.state = {
         authenticated: this.props.authenticated,
         file: undefined,
-        problems: [""],
+        problems: [],
         problemVal:undefined,
     }
     this.saveFile = this.saveFile.bind(this);
@@ -28,7 +28,7 @@ export default class Submission extends React.Component
     this.props.autoLogin();
     this.getProblems();
     this.setUser();
-    this.setState({problemVal: this.state.problems[0].problem});
+    this.state.problems.length >= 1 && this.setState({problemVal: this.state.problems[0].problem});
   }
 
   saveFile = (event) => {
@@ -72,7 +72,7 @@ export default class Submission extends React.Component
                 <hr/>
                 <select onChange  = {(e) => this.setState({problemVal: e.target.value})}>
                   {
-                    this.state.problems.map(problem => 
+                    this.state.problems.length >= 1 && this.state.problems.map(problem => 
                       <option value = {problem.problem}>{problem.problem}</option>
                     )
                   }
