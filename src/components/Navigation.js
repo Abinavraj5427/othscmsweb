@@ -6,8 +6,8 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+//import 'bootstrap/dist/css/bootstrap.min.css';*/
+import './Navigation.css'
 class Navigation extends React.PureComponent
 {
     render()
@@ -16,9 +16,9 @@ class Navigation extends React.PureComponent
         if(authenticated == true)
         {
             return(
-                <Navbar bg="dark" variant="dark">
+                <Navbar class="navbar" bg="dark" variant="dark">
 
-                    <Navbar.Brand href="/home">Home</Navbar.Brand>
+                    <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>
 
                     <Nav className="mr-auto">
                         <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
@@ -29,7 +29,7 @@ class Navigation extends React.PureComponent
                     </Nav>
 
                     <Nav pullRight className="ml-auto">
-                        <Nav.Link href="/Account">Account</Nav.Link>  
+                        <Nav.Link href="/Account">Account</Nav.Link>
                     </Nav>
 
                 </Navbar>
