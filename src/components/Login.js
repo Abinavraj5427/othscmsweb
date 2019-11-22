@@ -7,9 +7,9 @@ const axios = require('axios');
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username:'', password:'', response: '',authenticated:this.props.authenticated };
+    this.state = { username:'', password:'', response: ''};
     this.handleClick = this.handleClick.bind(this);
-    console.log(this.props.authenticated + " "+this.state.authenticated);
+    console.log(this.props.authenticated + " ");
   }
 
   componentDidMount(){
@@ -26,7 +26,7 @@ export default class Login extends React.Component {
             })
             .then(result => {
               console.log(result);
-              this.setState({authenticated:result.data.authenticated});
+              this.props.login();
               cookie.save('auth-token', result.data.auth_key);
             })
             .catch(error => console.log(error));
@@ -45,7 +45,7 @@ export default class Login extends React.Component {
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
               <br/>
               <input type = "submit" onClick = {() => {this.handleClick()}} ></input>
-
+              {this.props.authenticated && <Redirect to="/home" />}
             {/* <form action= {this.handleClick()}>
               <input class="button" type="image"  src={require('./entericon.jpg')}  height="25" width="25"/>
             </form> */}
