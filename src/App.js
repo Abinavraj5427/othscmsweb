@@ -17,6 +17,7 @@ export default class App extends React.Component {
     this.state = {authenticated: false};
     this.autoLogin = this.autoLogin.bind(this);
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
     this.autoLogin();
   }
 
@@ -26,7 +27,6 @@ export default class App extends React.Component {
   }
 
   autoLogin (){
-    let ret =false;
     var token = cookie.load('auth-token');
     cookie.load('auth-token') &&
     axios.post('http://localhost/othscmsbackend/confirmlogin.php',
@@ -36,8 +36,8 @@ export default class App extends React.Component {
       .then(result => {
         console.log(result);
         this.setState({authenticated: result.data.authenticated})
-        if(result.data.authenticated)ret = true;
       }).catch(error => console.log(error))
+      console.log("Authenticated: " +this.state.authenticated);
   }
 
   login(){
