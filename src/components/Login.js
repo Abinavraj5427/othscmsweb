@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Link, Redirect} from 'react-router-dom';
 import cookie from 'react-cookies';
 import loginstyles from './Login.css';
 const axios = require('axios');

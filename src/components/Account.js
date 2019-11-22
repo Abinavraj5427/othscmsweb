@@ -1,9 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
-import Button from 'react-bootstrap/Button';
 import cookie from 'react-cookies';
-import {BrowserRouter as Link, Redirect} from 'react-router-dom';
-const axios = require('axios');
+import {BrowserRouter as Redirect} from 'react-router-dom';
 
 export default class Account extends React.Component{
   constructor(props){
