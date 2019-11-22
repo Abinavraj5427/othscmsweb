@@ -33,6 +33,7 @@ html{
   background: inherit;
   border-radius: 2px;
   overflow: hidden;
+
 }
 
 .blurred-box:after{
@@ -51,12 +52,11 @@ html{
 .user-login-box{
   position: relative;
   text-align: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  z-index: 1;
+  margin-top: 100px;
 
 }
+
 
 input.username{
   width: 200px;
