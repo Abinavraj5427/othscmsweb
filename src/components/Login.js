@@ -1,8 +1,12 @@
 import  React from 'react';
 import cookie from 'react-cookies';
 import loginstyles from './Login.css';
+<<<<<<< HEAD
 import {Redirect} from 'react-router-dom';
 
+=======
+import {BrowserRouter as Redirect} from 'react-router-dom';
+>>>>>>> 29a07d2352c558fbbd3d0287f6d2678310655d0b
 const axios = require('axios');
 
 export default class Login extends React.Component {
@@ -36,7 +40,7 @@ export default class Login extends React.Component {
   render(){
     return(
       <div class = "login-styling">
-        <div class="blurred-box"></div>
+        <div class="blurred-box">
           <div class="user-login-box">
             <div style = {loginstyles}>
               <h1>Login</h1>
@@ -53,7 +57,7 @@ export default class Login extends React.Component {
 
             </div>
           </div>
-
+        </div>
       </div>
     );
   }
