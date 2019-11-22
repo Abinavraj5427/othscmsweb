@@ -1,7 +1,5 @@
 import React from 'react';
 import Navigation from './Navigation';
-import {BrowserRouter as Link, Redirect} from 'react-router-dom';
-import cookie from 'react-cookies';
 const axios = require('axios');
 
 export default class Leaderboard extends React.Component {
