@@ -1,6 +1,8 @@
-import React from 'react';
+import  React from 'react';
 import cookie from 'react-cookies';
 import loginstyles from './Login.css';
+import {Redirect} from 'react-router-dom';
+
 const axios = require('axios');
 
 export default class Login extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
-import {BrowserRouter as Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 export default class Account extends React.Component{
   constructor(props){
@@ -17,12 +17,15 @@ export default class Account extends React.Component{
   }
 
   handleLogout(){
-    cookie.remove('auth-token'); 
-    this.setState({authenticated: false});
+    cookie.remove('auth-token');
+    this.props.logout();
+    this.setState({authenticated:false});
+    console.log("hi");
   }
 
   render()
   {
+    console.log("render"+this.props.authenticated);
     return(
         <div>
             <Navigation/>
