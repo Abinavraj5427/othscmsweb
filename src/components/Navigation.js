@@ -1,11 +1,6 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Navigation extends React.PureComponent
@@ -13,7 +8,7 @@ class Navigation extends React.PureComponent
     render()
     {
         var authenticated = true;
-        if(authenticated == true)
+        if(authenticated)
         {
             return(
                 <Navbar bg="dark" variant="dark">
@@ -28,7 +23,7 @@ class Navigation extends React.PureComponent
                         <Nav.Link href="/submit">Submission</Nav.Link>
                     </Nav>
 
-                    <Nav pullRight className="ml-auto">
+                    <Nav className="ml-auto">
                         <Nav.Link href="/Account">Account</Nav.Link>  
                     </Nav>
 
@@ -42,7 +37,7 @@ class Navigation extends React.PureComponent
 
                     <Navbar.Brand href="/home">Home</Navbar.Brand>
 
-                    <Nav pullRight className="ml-auto">
+                    <Nav className="ml-auto">
                         <Nav.Link href="/Login">Log In</Nav.Link>
                     </Nav>
 

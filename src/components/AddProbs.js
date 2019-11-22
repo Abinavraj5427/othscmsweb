@@ -1,8 +1,5 @@
 import React from 'react';
 import Navigation from './Navigation';
-import Button from 'react-bootstrap/Button';
-import {BrowserRouter as Link, Redirect} from 'react-router-dom';
-import cookie from 'react-cookies';
 const axios = require('axios');
 
 
