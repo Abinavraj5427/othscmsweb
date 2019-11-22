@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
+//import 'bootstrap/dist/css/bootstrap.min.css';*/
+import './Navigation.css'
 class Navigation extends React.PureComponent
 {
     render()
@@ -11,9 +12,9 @@ class Navigation extends React.PureComponent
         if(authenticated)
         {
             return(
-                <Navbar bg="dark" variant="dark">
+                <Navbar class="navbar" bg="dark" variant="dark">
 
-                    <Navbar.Brand href="/home">Home</Navbar.Brand>
+                    <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>
 
                     <Nav className="mr-auto">
                         <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
