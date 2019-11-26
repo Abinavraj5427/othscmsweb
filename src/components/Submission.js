@@ -16,7 +16,6 @@ export default class Submission extends React.Component
         file: undefined,
         problems: [],
         problemVal:undefined,
-        team: "team01",
     }
     this.saveFile = this.saveFile.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
@@ -26,7 +25,7 @@ export default class Submission extends React.Component
   componentDidMount(){
     this.props.autoLogin();
     this.getProblems();
-    //this.setUser();
+    this.setUser();
   }
 
   saveFile = (event) => {
@@ -35,11 +34,11 @@ export default class Submission extends React.Component
   }
 
   uploadFile(){
-
     console.log(this.state.file);
     const config = {
       headers: {
-          'content-type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
 

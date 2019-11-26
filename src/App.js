@@ -6,6 +6,7 @@ import Account from './components/Account';
 import Home from './components/Home';
 import Submission from './components/Submission';
 import AddProbs from './components/AddProbs';
+import AddTeams from './components/AddTeams';
 import cookie from 'react-cookies';
 const axios = require('axios');
 
@@ -55,6 +56,7 @@ export default class App extends React.Component {
           {
             //hi
           }
+          <Route exact path='/addteams' render = {(props) => <AddTeams {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
           <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
