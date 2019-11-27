@@ -34,7 +34,7 @@ export default class Submission extends React.Component
   }
 
   uploadFile(){
-    console.log(this.state.file);
+    
     const config = {
       headers: {
           'Content-Type': 'multipart/form-data',
@@ -44,7 +44,7 @@ export default class Submission extends React.Component
 
     let formData = new FormData();
     formData.append("file", this.state.file);
-    formData.append("team", this.state.team);
+    formData.append("team", this.state.user);
     formData.append("problem", this.state.problemVal);
 
     axios.post('http://localhost/othscmsbackend/upload.php', formData, config
@@ -63,12 +63,17 @@ export default class Submission extends React.Component
   }
 
   setUser(){
+    var token = cookie.load('auth-token');
+    cookie.load('auth-token') &&
     axios.post('http://localhost/othscmsbackend/confirmlogin.php',
-    {
-      token: cookie.load('auth-token'),
-    })
-    .then(result => {this.setState({user: result['team']})})
-    .catch(error => console.log(error));
+      {
+        authtoken: token,
+      })
+      .then(result => {
+        //console.log(result.data.team);
+        this.setState({user: result.data.team})
+      }).catch(error => console.log(error))
+      //console.log("Authenticated: " +this.state.authenticated);
   }
 
   render()
@@ -89,7 +94,7 @@ export default class Submission extends React.Component
                 <br/>
                 <label>Submit a java file:</label>
                 <br/>
-                <input type="file" name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
+                <input type="file"  name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
                 <br/>
                 <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>
             </div>
