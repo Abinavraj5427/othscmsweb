@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route,Redirect} from 'react-router-dom';
 import Login from './components/Login';
 import Leaderboard from './components/Leaderboard';
 import Account from './components/Account';
@@ -50,19 +50,17 @@ export default class App extends React.Component {
   }
 
   render(){
+
     return(
       <Router>
         <Switch>
-          {
-            //hi
-          }
-          <Route exact path='/addteams' render = {(props) => <AddTeams {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
-          <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
-          <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
-          <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
-          <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />
-          <Route exact path='/home' render = {(props) => <Home {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />
-          <Route exact path='/' render = {(props) => <Login {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />
+          {this.state.authenticated && <Route exact path='/addteams' render = {(props) => <AddTeams {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />}
+          {this.state.authenticated && <Route exact path='/home' render = {(props) => <Home {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          <Route path='/' render = {(props) => <Login {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />
         </Switch>
       </Router>
     );
