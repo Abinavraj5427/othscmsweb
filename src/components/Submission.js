@@ -70,10 +70,8 @@ export default class Submission extends React.Component
         authtoken: token,
       })
       .then(result => {
-        //console.log(result.data.team);
         this.setState({user: result.data.team})
       }).catch(error => console.log(error))
-      //console.log("Authenticated: " +this.state.authenticated);
   }
 
   render()

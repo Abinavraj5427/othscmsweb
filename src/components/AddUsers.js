@@ -4,7 +4,7 @@ const axios = require('axios');
 
 
 
-export default class AddTeams extends React.Component 
+export default class AddUsers extends React.Component 
 {
     
   constructor(props) 
@@ -77,19 +77,27 @@ export default class AddTeams extends React.Component
                 <input type = "text" placeholder = "username" value = {this.state.newUser} onChange={event => this.setState({newUser: event.target.value})}/>
                 <input type = "text" placeholder = "password" value = {this.state.newPass} onChange={event => this.setState({newPass: event.target.value})}/>
                 <input type = "text" placeholder = "role" value = {this.state.newRole} onChange={event => this.setState({newRole: event.target.value})}/>
-                <input type = 'submit' value = "Add Team" onClick = {() => this.addTeam(this.state.newUser, this.state.newPass, this.state.newRole)}/>
-
+                <input type = 'submit' value = "Add User" onClick = {() => this.addTeam(this.state.newUser, this.state.newPass, this.state.newRole)}/>
+                
                 <h2>User List</h2>
-                <ul>
+                <table>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Delete</th>
+                    </tr>
                     {
                         this.state.users.length >=1 && this.state.users.map(user => 
-                            <div>
-                                <li>{user.username} {user.password} {user.role}</li>
-                                <input type = 'submit' value = "DELETE" onClick = {() => {this.deleteTeam(user.username)}}/>
-                            </div>
+                            <tr>
+                                <td>{user.username}</td>
+                                <td>{user.password}</td>
+                                <td>{user.role}</td>
+                                <td><input type = 'submit' value = "DELETE" onClick = {() => {this.deleteTeam(user.username)}}/></td>
+                            </tr>
                         )
                     }
-                </ul>
+                </table>
                 
             </div>
         </div>   
