@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import './Navigation.css'*/
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import './Navigation.css'
 class Navigation extends React.PureComponent
 {
     render()
@@ -12,19 +12,17 @@ class Navigation extends React.PureComponent
         {
             return(
                 <Navbar class="navbar" bg="dark" variant="dark">
-
-                    <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>
-
+                      <Navbar.Brand href="/home">Home</Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/leaderboard">Leaderboards</Nav.Link>
+                        <Nav.Link class="leaderboard" href="/leaderboard">Leaderboards</Nav.Link>
                     </Nav>
 
                     <Nav className="mr-auto">
-                        <Nav.Link href="/submit">Submission</Nav.Link>
+                        <Nav.Link class="submission" href="/submit">Submission</Nav.Link>
                     </Nav>
 
                     <Nav className="ml-auto">
-                        <Nav.Link href="/Account">Account</Nav.Link>
+                        <Nav.Link class="account" href="/Account">Account</Nav.Link>
                     </Nav>
 
                 </Navbar>
