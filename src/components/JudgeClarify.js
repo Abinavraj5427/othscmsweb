@@ -15,6 +15,7 @@ export default class JudgeClarify extends React.Component
         clarifications: [],
         user: "",
         newQuestion: "",
+        clarID: undefined,
     }
     this.getQuestions = this.getQuestions.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -57,10 +58,23 @@ export default class JudgeClarify extends React.Component
                 <h1>Clarifications</h1>
                 <hr/>
                
+                <h2>Answer Questions</h2>
+
+                <b>Problem ID: </b>
+                <select onChange  = {(e) => this.setState({clarID: e.target.value})}>
+                  {
+                    this.state.clarifications.length >= 1 && this.state.clarifications.map(clar => 
+                      <option key = {clar.id} value = {clar.id}>{clar.id}</option>
+                    )
+                  }
+                </select>
+
+                <input type = "text" placeholder = "Answer"/>
+                <input type = "submit" onClick = {() =>{}}/>
                 <h2>Recently Asked</h2>
                 <table>
                     <tr>
-                        <th>Select</th>
+                        <th>Problem ID</th>
                         <th>Team</th>
                         <th>Question</th>
                         <th>Answer</th>
@@ -68,6 +82,7 @@ export default class JudgeClarify extends React.Component
                     {
                         this.state.clarifications.length >=1 && this.state.clarifications.map(clarification => 
                             <tr>
+                                <td>{clarification.id}</td>
                                 <td>{clarification.team}</td>
                                 <td>{clarification.question}</td>
                                 <td>{clarification.answer}</td>

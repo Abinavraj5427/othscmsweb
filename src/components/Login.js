@@ -11,7 +11,6 @@ export default class Login extends React.Component {
     super(props);
     this.state = { username:'', password:'', response: '', authenticated:false};
     this.handleClick = this.handleClick.bind(this);
-    //console.log(this.props.authenticated + " ");
   }
 
   componentDidMount(){
@@ -26,7 +25,6 @@ export default class Login extends React.Component {
             })
             .then(result => {
               console.log(result);
-              //this.setState({authenticated:true});
               cookie.save('auth-token', result.data.auth_key);
               this.props.login();
               this.props.history.push('/home');
