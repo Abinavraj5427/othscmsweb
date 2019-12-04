@@ -78,8 +78,6 @@ class Navigation extends React.PureComponent
                         </Nav>
                     }
 
-                    
-
                     {!this.state.role && <Nav className="ml-auto">
                         <Nav.Link href="/">Log In</Nav.Link>
                     </Nav>}
