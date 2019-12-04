@@ -35,6 +35,7 @@ class Navigation extends React.PureComponent
         }).catch(error => console.log(error))
     }
 
+
     handleLogout(){
         cookie.remove('auth-token');
         this.props.logout();

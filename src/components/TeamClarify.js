@@ -43,6 +43,7 @@ export default class TeamClarify extends React.Component
     axios.post('http://localhost/othscmsbackend/add_clarification.php',{
         team: this.state.user,
         question: question,
+        problem: this.state.problemVal,
     })
     .then(result => {
       console.log(result);
@@ -100,6 +101,7 @@ export default class TeamClarify extends React.Component
                 <table>
                     <tr>
                         <th>Team</th>
+                        <th>Problem</th>
                         <th>Question</th>
                         <th>Answer</th>
                     </tr>
@@ -107,6 +109,7 @@ export default class TeamClarify extends React.Component
                         this.state.clarifications.length >=1 && this.state.clarifications.map(clarification => 
                             <tr>
                                 <td>{clarification.team}</td>
+                                <td>{clarification.problem}</td>
                                 <td>{clarification.question}</td>
                                 <td>{clarification.answer}</td>
                             </tr>
