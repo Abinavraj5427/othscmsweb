@@ -96,6 +96,7 @@ export default class JudgeClarify extends React.Component
                     <tr>
                         <th>Question ID</th>
                         <th>Team</th>
+                        <th>Problem</th>
                         <th>Question</th>
                         <th>Answer</th>
                     </tr>
@@ -104,6 +105,7 @@ export default class JudgeClarify extends React.Component
                             <tr>
                                 <td>{clarification.id}</td>
                                 <td>{clarification.team}</td>
+                                <td>{clarification.problem}</td>
                                 <td>{clarification.question}</td>
                                 <td>{clarification.answer}</td>
                             </tr>
