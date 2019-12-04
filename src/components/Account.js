@@ -19,19 +19,18 @@ export default class Account extends React.Component{
   handleLogout(){
     cookie.remove('auth-token');
     this.props.logout();
-    this.setState({authenticated:false});
-    console.log("hi");
+    //this.setState({authenticated:false});
+    this.props.history.push('/');
   }
 
   render()
   {
-    console.log("render"+this.props.authenticated);
+    //console.log("render"+this.props.authenticated);
     return(
         <div>
             <Navigation/>
             <div>
                 <h2>Account</h2>
-                {!this.props.authenticated && <Redirect push to="/" />}
                 <input type = "submit" value = "LOGOUT" onClick = {() => {this.handleLogout()}}></input>
             </div>
         </div>

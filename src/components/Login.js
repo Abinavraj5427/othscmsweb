@@ -1,6 +1,7 @@
 import  React from 'react';
 import cookie from 'react-cookies';
 import loginstyles from './Login.css';
+import Navigation from './Navigation';
 import {Redirect} from 'react-router-dom';
 
 const axios = require('axios');
@@ -8,15 +9,12 @@ const axios = require('axios');
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username:'', password:'', response: ''};
+    this.state = { username:'', password:'', response: '', authenticated:false};
     this.handleClick = this.handleClick.bind(this);
-    console.log(this.props.authenticated + " ");
   }
 
   componentDidMount(){
-    console.log(this.props.authenticated);
-    this.props.autoLogin();
-    console.log(this.props.authenticated);
+   this.props.autoLogin();
   }
 
   handleClick(){
@@ -27,8 +25,9 @@ export default class Login extends React.Component {
             })
             .then(result => {
               console.log(result);
-              this.props.login();
               cookie.save('auth-token', result.data.auth_key);
+              this.props.login();
+              this.props.history.push('/home');
             })
             .catch(error => console.log(error));
   }
@@ -36,6 +35,7 @@ export default class Login extends React.Component {
   render(){
     return(
       <div class = "login-styling">
+      <Navigation/>
         <div class="blurred-box">
           <div class="user-login-box">
             <div style = {loginstyles}>
@@ -46,7 +46,7 @@ export default class Login extends React.Component {
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})}/>
               <br/>
               <input class="button" type="image" src={require('./entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
-
+              
 
             </div>
           </div>
