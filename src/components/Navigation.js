@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Navigation.css'
 import cookie from 'react-cookies';
 const axios = require('axios');
 
-//import './Navigation.css'
 class Navigation extends React.PureComponent
 {
     constructor(props){
@@ -43,8 +43,8 @@ class Navigation extends React.PureComponent
     render(){
 
             return(
-
-                <Navbar class="navbar" bg="dark" variant="dark">
+              <div class="nav">
+                <Navbar class="nav" fixed="top" >
 
                     {this.state.role && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
 
@@ -78,16 +78,16 @@ class Navigation extends React.PureComponent
                         </Nav>
                     }
 
-                    
+
 
                     {!this.state.role && <Nav className="ml-auto">
                         <Nav.Link href="/">Log In</Nav.Link>
                     </Nav>}
-
+                    <div class="the-blur"></div>
                 </Navbar>
-           
+              </div>
             );
-        
+
     }
 }
 
