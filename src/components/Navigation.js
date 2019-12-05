@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Timer from './Timer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import cookie from 'react-cookies';
 const axios = require('axios');
@@ -12,6 +13,7 @@ class Navigation extends React.PureComponent
         super(props);
         this.state = {
             role: undefined,
+            timer:<Timer/>
         }
         this.getRole = this.getRole.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -71,21 +73,22 @@ class Navigation extends React.PureComponent
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
-
+                    <Nav className="ml-auto">{this.state.timer}</Nav>
                     {this.state.role &&
                         <Nav className="ml-auto">
                             <Nav.Link class="account" href="/account">Logout</Nav.Link>
                         </Nav>
                     }
 
+
+
                     {!this.state.role && <Nav className="ml-auto">
                         <Nav.Link href="/">Log In</Nav.Link>
                     </Nav>}
 
                 </Navbar>
-           
+
             );
-        
     }
 }
 

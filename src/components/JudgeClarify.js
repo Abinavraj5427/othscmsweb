@@ -31,8 +31,16 @@ export default class JudgeClarify extends React.Component
 
   }
 
-  deleteClar(){
-      
+  deleteClar(id){
+    axios.post('http://localhost/othscmsbackend/delete_clarification.php',{
+      id ,
+  })
+  .then(result => {
+    console.log(result);
+    this.getQuestions();
+    this.setState({message: ""});
+  })
+  .catch(error => console.log(error));
   }
 
   updateAnswer(){
@@ -115,7 +123,7 @@ export default class JudgeClarify extends React.Component
                                 <td>{clarification.problem}</td>
                                 <td>{clarification.question}</td>
                                 <td>{clarification.answer}</td>
-                                <td><input type = "submit" value = "DELETE" onClick = {() => {this.deleteClar()}}/></td>
+                                <td><input type = "submit" value = "DELETE" onClick = {() => {this.deleteClar(clarification.id)}}/></td>
                             </tr>
                         )
                     }
