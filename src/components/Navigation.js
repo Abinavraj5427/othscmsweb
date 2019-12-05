@@ -93,7 +93,6 @@ class Navigation extends React.PureComponent
                 </Navbar>
 
             );
-
     }
 }
 
