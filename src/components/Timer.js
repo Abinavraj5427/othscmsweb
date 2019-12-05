@@ -23,9 +23,9 @@ export default class Timer extends React.Component {
 
   render(){
     var total = this.state.timeSeconds;
-    var hours = (total/3600).toFixed(0);
+    var hours = Math.floor(total/3600);
     total-=hours*3600;
-    var minutes = (total/60).toFixed(0);
+    var minutes = Math.floor(total/60);
     total-=minutes*60;
     var seconds = (total);
     return(
