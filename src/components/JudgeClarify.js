@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
+import { declareExportDeclaration } from '@babel/types';
 const axios = require('axios');
 
 
@@ -21,12 +22,25 @@ export default class JudgeClarify extends React.Component
     this.getQuestions = this.getQuestions.bind(this);
     this.setUser = this.setUser.bind(this);
     this.updateAnswer = this.updateAnswer.bind(this);
+    this.deleteClar = this.deleteClar.bind(this);
   }
 
   componentDidMount(){
       this.setUser();
       this.getQuestions();
 
+  }
+
+  deleteClar(id){
+    axios.post('http://localhost/othscmsbackend/delete_clarification.php',{
+      id ,
+  })
+  .then(result => {
+    console.log(result);
+    this.getQuestions();
+    this.setState({message: ""});
+  })
+  .catch(error => console.log(error));
   }
 
   updateAnswer(){
@@ -99,6 +113,7 @@ export default class JudgeClarify extends React.Component
                         <th>Problem</th>
                         <th>Question</th>
                         <th>Answer</th>
+                        <th>Delete</th>
                     </tr>
                     {
                         this.state.clarifications.length >=1 && this.state.clarifications.map(clarification => 
@@ -108,6 +123,7 @@ export default class JudgeClarify extends React.Component
                                 <td>{clarification.problem}</td>
                                 <td>{clarification.question}</td>
                                 <td>{clarification.answer}</td>
+                                <td><input type = "submit" value = "DELETE" onClick = {() => {this.deleteClar(clarification.id)}}/></td>
                             </tr>
                         )
                     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Timer from './Timer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navigation.css'
 import cookie from 'react-cookies';
@@ -12,6 +13,7 @@ class Navigation extends React.PureComponent
         super(props);
         this.state = {
             role: undefined,
+            timer:<Timer/>
         }
         this.getRole = this.getRole.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -69,9 +71,13 @@ class Navigation extends React.PureComponent
                     </Nav>}
 
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
-                        <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
+                        <Nav.Link class="timer" href="/timer">Timer Settings</Nav.Link>
                     </Nav>}
 
+                    {this.state.role === "JUDGE" &&<Nav className="mr-auto">
+                        <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
+                    </Nav>}
+                    <Nav className="ml-auto">{this.state.timer}</Nav>
                     {this.state.role &&
                         <Nav className="ml-auto">
                             <Nav.Link class="account" href="/account">Logout</Nav.Link>
@@ -85,9 +91,14 @@ class Navigation extends React.PureComponent
                     </Nav>}
                     <div class="the-blur"></div>
                 </Navbar>
+<<<<<<< HEAD
               </div>
             );
 
+=======
+
+            );
+>>>>>>> cab5884ffdd7f2c7b6c1c413faf75243d298db95
     }
 }
 
