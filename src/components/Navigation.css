@@ -57,3 +57,9 @@ body {
 .account {
   margin-top: 100px;
 }
+
+.timerDisplay{
+  font-family: "Rubik","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 900;
+  color:white;
+}
