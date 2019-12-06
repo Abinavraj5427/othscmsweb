@@ -91,14 +91,10 @@ class Navigation extends React.PureComponent
                     </Nav>}
                     <div class="the-blur"></div>
                 </Navbar>
-<<<<<<< HEAD
               </div>
             );
 
-=======
 
-            );
->>>>>>> cab5884ffdd7f2c7b6c1c413faf75243d298db95
     }
 }
 
