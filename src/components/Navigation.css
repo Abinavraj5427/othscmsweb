@@ -31,3 +31,9 @@ body {
 	background-color: rgba(200, 200, 200, ..1);
 	backdrop-filter: blur(5px);
 }
+
+.timerDisplay{
+  font-family: "Rubik","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 900;
+  color:white;
+}

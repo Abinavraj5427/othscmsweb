@@ -12,11 +12,11 @@ export default class TimerPage extends React.Component
     super(props);
     this.state = {};
     this.startTimer = this.startTimer.bind(this);
-
+    this.endTimer = this.endTimer.bind(this);
   }
 
   componentDidMount(){
-    
+
   }
 
   startTimer(){
@@ -28,6 +28,14 @@ export default class TimerPage extends React.Component
     .catch(error => console.log(error));
   }
 
+  endTimer(){
+    axios.post('http://localhost/othscmsbackend/endTimer.php',{
+    })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(error => console.log(error));
+  }
 
   render()
   {
@@ -36,6 +44,8 @@ export default class TimerPage extends React.Component
             <Navigation/>
             <div>
                 <input type = 'submit' value = "Start Timer" onClick = {() => this.startTimer()}/>
+                  <input type = 'submit' value = "End Timer" onClick = {() => this.endTimer()}/>
+
             </div>
         </div>
     );

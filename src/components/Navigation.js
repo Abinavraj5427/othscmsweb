@@ -71,7 +71,11 @@ class Navigation extends React.PureComponent
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
+<<<<<<< HEAD
 
+=======
+                    <Nav class="timerDisplay" >{this.state.timer}</Nav>
+>>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
                     {this.state.role &&
                         <Nav className="ml-auto">
                             <Nav.Link class="account" href="/account">Logout</Nav.Link>
@@ -88,6 +92,10 @@ class Navigation extends React.PureComponent
               </div>
             );
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
     }
 }
 
