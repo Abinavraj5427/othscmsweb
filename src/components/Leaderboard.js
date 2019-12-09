@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import {ip} from "../network";
 const axios = require('axios');
 
 export default class Leaderboard extends React.Component {
@@ -35,7 +36,7 @@ export default class Leaderboard extends React.Component {
   }
 
   pullData(){
-    axios.post('http://localhost/othscmsbackend/leaderboard.php', {}).then(result=>{
+    axios.post("http://"+ip+'/othscmsbackend/leaderboard.php', {}).then(result=>{
       this.setState({teams:result.data});
       console.log(result.data);
     }).catch(error => console.log(error));

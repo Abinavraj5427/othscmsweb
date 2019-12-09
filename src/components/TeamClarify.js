@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
+import {ip} from "../network";
 const axios = require('axios');
 
 
@@ -31,7 +32,7 @@ export default class TeamClarify extends React.Component
   }
 
   getQuestions(){
-    axios.post('http://localhost/othscmsbackend/get_clarifications.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{})
     .then(result => {
       this.setState({clarifications: result.data});
     })
@@ -40,7 +41,7 @@ export default class TeamClarify extends React.Component
 
   addQuestions(question){
     this.setState({newQuestion: ""});
-    axios.post('http://localhost/othscmsbackend/add_clarification.php',{
+    axios.post("http://"+ip+'/othscmsbackend/add_clarification.php',{
         team: this.state.user,
         question: question,
         problem: this.state.problemVal,
@@ -54,7 +55,7 @@ export default class TeamClarify extends React.Component
 
 
   getProblems(){
-    axios.post('http://localhost/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
     .then(result => {
       this.setState({problems: result.data});
       result.data.length >=1 && this.setState({problemVal: result.data[0].problem});
@@ -65,7 +66,7 @@ export default class TeamClarify extends React.Component
   setUser(){
     var token = cookie.load('auth-token');
     cookie.load('auth-token') &&
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
       })

@@ -3,7 +3,7 @@ import cookie from 'react-cookies';
 import loginstyles from './Login.css';
 import Navigation from './Navigation';
 import {Redirect} from 'react-router-dom';
-
+import {ip} from "../network";
 const axios = require('axios');
 
 export default class Login extends React.Component {
@@ -17,10 +17,11 @@ export default class Login extends React.Component {
   componentDidMount(){
    this.props.autoLogin();
    this.props.history.push('/');
+   //console.log(ip);
   }
 
   handleClick(){
-    axios.post('http://localhost/othscmsbackend/login.php',
+    axios.post("http://"+ip+'/othscmsbackend/login.php',
             {
               username: this.state.username,
               password: this.state.password,
@@ -37,7 +38,7 @@ export default class Login extends React.Component {
   enterPressed(event){
     var code = event.keyCode || event.which;
     if(code === 13) { //13 is the enter keycode
-    axios.post('http://localhost/othscmsbackend/login.php',
+    axios.post("http://"+ip+'/othscmsbackend/login.php',
             {
               username: this.state.username,
               password: this.state.password,
@@ -62,7 +63,7 @@ export default class Login extends React.Component {
             <div style = {loginstyles}>
               <h1>Login</h1>
               <br/>
-              <input class="username" placeholder = "Username" style = {{margin: 10}} type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})} onKeyPress={event => this.enterPressed(event)}/>
+              <input class="username" placeholder = "Username" style = {{margin: 10}} type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})} />
               <br/>
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})} onKeyPress={event => this.enterPressed(event)}/>
               <br/>

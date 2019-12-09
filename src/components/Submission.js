@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
+import {ip} from "../network";
 const axios = require('axios');
 
 
@@ -47,14 +48,14 @@ export default class Submission extends React.Component
     formData.append("team", this.state.user);
     formData.append("problem", this.state.problemVal);
 
-    axios.post('http://localhost/othscmsbackend/upload.php', formData, config
+    axios.post("http://"+ip+'/othscmsbackend/upload.php', formData, config
     ).then(result=>{
       console.log(result);
     }).catch(error => console.log(error));
   }
 
   getProblems(){
-    axios.post('http://localhost/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
     .then(result => {
       this.setState({problems: result.data});
       result.data.length >=1 && this.setState({problemVal: result.data[0].problem});
@@ -65,7 +66,7 @@ export default class Submission extends React.Component
   setUser(){
     var token = cookie.load('auth-token');
     cookie.load('auth-token') &&
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
       })

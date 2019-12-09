@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
-import { declareExportDeclaration } from '@babel/types';
+import {ip} from "../network";
 const axios = require('axios');
 
 
@@ -32,7 +32,7 @@ export default class JudgeClarify extends React.Component
   }
 
   deleteClar(id){
-    axios.post('http://localhost/othscmsbackend/delete_clarification.php',{
+    axios.post("http://"+ip+'/othscmsbackend/delete_clarification.php',{
       id ,
   })
   .then(result => {
@@ -44,7 +44,7 @@ export default class JudgeClarify extends React.Component
   }
 
   updateAnswer(){
-    axios.post('http://localhost/othscmsbackend/answer_clarification.php',{
+    axios.post("http://"+ip+'/othscmsbackend/answer_clarification.php',{
         id: this.state.clarID,
         answer: this.state.answer,
     })
@@ -57,7 +57,7 @@ export default class JudgeClarify extends React.Component
   }
 
   getQuestions(){
-    axios.post('http://localhost/othscmsbackend/get_clarifications.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{})
     .then(result => {
       !this.state.clarID && this.setState({clarID: result.data[0].id});
       this.setState({clarifications: result.data});
@@ -69,7 +69,7 @@ export default class JudgeClarify extends React.Component
   setUser(){
     var token = cookie.load('auth-token');
     cookie.load('auth-token') &&
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
       })

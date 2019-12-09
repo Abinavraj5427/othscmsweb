@@ -12,8 +12,8 @@ import TeamClarify from './components/TeamClarify';
 import JudgeClarify from './components/JudgeClarify';
 import Error404 from './components/Error404';
 import cookie from 'react-cookies';
+import {ip} from "./network";
 const axios = require('axios');
-
 
 
 export default class App extends React.Component {
@@ -33,7 +33,7 @@ export default class App extends React.Component {
   autoLogin (){
     var token = cookie.load('auth-token');
     cookie.load('auth-token') &&
-    axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+    axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
       })
@@ -56,16 +56,16 @@ export default class App extends React.Component {
     return(
       <Router>
         <Switch>
-          {this.state.authenticated && this.state.role == "JUDGE" && <Route exact path='/judgeclarify' render = {(props) => <JudgeClarify {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && this.state.role == "COMPETITOR" && <Route exact path='/teamclarify' render = {(props) => <TeamClarify {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && this.state.role == "JUDGE" && <Route exact path='/addusers' render = {(props) => <AddUsers {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && this.state.role == "JUDGE" &&  <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && this.state.role == "COMPETITOR" &&  <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />}
-          {this.state.authenticated &&  <Route exact path='/home' render = {(props) => <Home {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {!this.state.authenticated && <Route exact path='/' render = {(props) => <Login {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />}
-          <Route component={Error404} />
+          {this.state.authenticated && this.state.role == "JUDGE" && <Route exact path='/judgeclarify' render = {(props) => <JudgeClarify {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role == "COMPETITOR" && <Route exact path='/teamclarify' render = {(props) => <TeamClarify {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role == "JUDGE" && <Route exact path='/addusers' render = {(props) => <AddUsers {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role == "JUDGE" &&  <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role == "COMPETITOR" &&  <Route exact path='/submit' render = {(props) => <Submission {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && <Route exact path='/account' render = {(props) => <Account {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />}
+          {this.state.authenticated &&  <Route exact path='/home' render = {(props) => <Home {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {!this.state.authenticated && <Route exact path='/' render = {(props) => <Login {...props} ip = {ip} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />}
+          <Route component={Error404} ip = {ip}/>
 
         </Switch>
       </Router>

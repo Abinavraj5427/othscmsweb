@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from './Navigation';
+import {ip} from "../network";
 const axios = require('axios');
+
 
 
 
@@ -24,7 +26,7 @@ export default class AddProbs extends React.Component
   }
 
   getProblems(){
-    axios.post('http://localhost/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
     .then(result => {
       this.setState({problems: result.data});
     })
@@ -34,7 +36,7 @@ export default class AddProbs extends React.Component
   addProblem(problem){
     this.setState({newProbName: ""})
     console.log(problem);
-    axios.post('http://localhost/othscmsbackend/change_probs.php',{
+    axios.post("http://"+ip+'/othscmsbackend/change_probs.php',{
         problem: problem,
         append: true,
     })
@@ -47,7 +49,7 @@ export default class AddProbs extends React.Component
 
   deleteProblem(problem){
     console.log(problem);
-    axios.post('http://localhost/othscmsbackend/change_probs.php',{
+    axios.post("http://"+ip+'/othscmsbackend/change_probs.php',{
         problem: problem,
         append: false,
     })

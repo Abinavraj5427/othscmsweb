@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import {ip} from "../network";
 const axios = require('axios');
 
 
@@ -26,7 +27,7 @@ export default class AddUsers extends React.Component
   }
 
   getTeams(){
-    axios.post('http://localhost/othscmsbackend/get_teams.php',{})
+    axios.post(ip+'/othscmsbackend/get_teams.php',{})
     .then(result => {
       this.setState({users: result.data});
     })
@@ -36,7 +37,7 @@ export default class AddUsers extends React.Component
   addTeam(user, pass, role){
     this.setState({newUser: "", newPass: "", newRole: "COMPETITOR"})
     console.log(user);
-    axios.post('http://localhost/othscmsbackend/change_teams.php',{
+    axios.post(ip+'/othscmsbackend/change_teams.php',{
         username: user,
         password: pass,
         role: role,
@@ -51,7 +52,7 @@ export default class AddUsers extends React.Component
 
   deleteTeam(user){
     console.log(user);
-    axios.post('http://localhost/othscmsbackend/change_teams.php',{
+    axios.post("http://"+ip+'/othscmsbackend/change_teams.php',{
         username: user,
         password: "",
         role: "",

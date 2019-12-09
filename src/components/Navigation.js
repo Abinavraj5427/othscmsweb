@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Timer from './Timer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import cookie from 'react-cookies';
+import {ip} from "../network";
 const axios = require('axios');
 
 //import './Navigation.css'
@@ -26,7 +27,7 @@ class Navigation extends React.PureComponent
     getRole(){
         var token = cookie.load('auth-token');
         cookie.load('auth-token') &&
-        axios.post('http://localhost/othscmsbackend/confirmlogin.php',
+        axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
         {
             authtoken: token,
         })
