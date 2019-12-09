@@ -1,20 +1,18 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Timer from './Timer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Navigation.css'
 import cookie from 'react-cookies';
 import {ip} from "../network";
 const axios = require('axios');
 
-//import './Navigation.css'
 class Navigation extends React.PureComponent
 {
     constructor(props){
         super(props);
         this.state = {
             role: undefined,
-            timer:<Timer/>
         }
         this.getRole = this.getRole.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -46,8 +44,8 @@ class Navigation extends React.PureComponent
     render(){
 
             return(
-
-                <Navbar class="navbar" bg="dark" variant="dark">
+              <div class="nav">
+                <Navbar class="nav" fixed="top" >
 
                     {this.state.role && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
 
@@ -74,7 +72,11 @@ class Navigation extends React.PureComponent
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
-                    <Nav className="ml-auto">{this.state.timer}</Nav>
+<<<<<<< HEAD
+
+=======
+                    <Nav class="timerDisplay" >{this.state.timer}</Nav>
+>>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
                     {this.state.role &&
                         <Nav className="ml-auto">
                             <Nav.Link class="account" href="/account">Logout</Nav.Link>
@@ -86,10 +88,15 @@ class Navigation extends React.PureComponent
                     {!this.state.role && <Nav className="ml-auto">
                         <Nav.Link href="/">Log In</Nav.Link>
                     </Nav>}
-
+                    <div class="the-blur"></div>
                 </Navbar>
-
+              </div>
             );
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
     }
 }
 
