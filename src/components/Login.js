@@ -66,11 +66,7 @@ export default class Login extends React.Component {
               <br/>
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})} onKeyPress={event => this.enterPressed(event)}/>
               <br/>
-<<<<<<< HEAD
-              <input class="button" type="image" src={require('./entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
-=======
               <input class="button" type="image" onKeyPress={event => this.enterPressed(event)} src={require('./entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
->>>>>>> cab5884ffdd7f2c7b6c1c413faf75243d298db95
 
 
             </div>
