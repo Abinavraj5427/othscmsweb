@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Navigation.css'
+import navstyles from './Navigation.css';
 import cookie from 'react-cookies';
 import {ip} from "../network";
 const axios = require('axios');
@@ -28,6 +28,11 @@ class Navigation extends React.PureComponent
         axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
         {
             authtoken: token,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
         })
         .then(result => {
             this.setState({role: result.data.role})
@@ -44,7 +49,7 @@ class Navigation extends React.PureComponent
     render(){
 
             return(
-              <div class="nav">
+              <div class="nav" styles = {navstyles}>
                 <Navbar class="nav" fixed="top" >
 
                     {this.state.role && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
@@ -72,11 +77,8 @@ class Navigation extends React.PureComponent
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
-<<<<<<< HEAD
-
-=======
+                    
                     <Nav class="timerDisplay" >{this.state.timer}</Nav>
->>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
                     {this.state.role &&
                         <Nav className="ml-auto">
                             <Nav.Link class="account" href="/account">Logout</Nav.Link>
@@ -93,10 +95,6 @@ class Navigation extends React.PureComponent
               </div>
             );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
     }
 }
 

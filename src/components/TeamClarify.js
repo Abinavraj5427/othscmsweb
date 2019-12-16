@@ -32,7 +32,12 @@ export default class TeamClarify extends React.Component
   }
 
   getQuestions(){
-    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       this.setState({clarifications: result.data});
     })
@@ -45,6 +50,11 @@ export default class TeamClarify extends React.Component
         team: this.state.user,
         question: question,
         problem: this.state.problemVal,
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);
@@ -55,7 +65,12 @@ export default class TeamClarify extends React.Component
 
 
   getProblems(){
-    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       this.setState({problems: result.data});
       result.data.length >=1 && this.setState({problemVal: result.data[0].problem});
@@ -69,6 +84,11 @@ export default class TeamClarify extends React.Component
     axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
       })
       .then(result => {
         //console.log(result.data.team);

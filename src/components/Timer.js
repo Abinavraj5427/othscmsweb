@@ -15,7 +15,12 @@ export default class Timer extends React.Component {
   }
 
   updateTime(){
-    axios.post('http://localhost/othscmsbackend/timer.php', {}).then(result=>{
+    axios.post('http://localhost/othscmsbackend/timer.php', {},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(result=>{
       this.setState({timeSeconds:result.data});
       console.log(result.data);
     }).catch(error => console.log(error));

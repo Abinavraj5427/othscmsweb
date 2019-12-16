@@ -25,7 +25,13 @@ export default class Login extends React.Component {
             {
               username: this.state.username,
               password: this.state.password,
-            })
+            },
+            {
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+              }
+            }
+            )
             .then(result => {
               console.log(result);
               cookie.save('auth-token', result.data.auth_key);
@@ -42,6 +48,11 @@ export default class Login extends React.Component {
             {
               username: this.state.username,
               password: this.state.password,
+            },
+            {
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+              }
             })
             .then(result => {
               console.log(result);
@@ -67,10 +78,6 @@ export default class Login extends React.Component {
               <br/>
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})} onKeyPress={event => this.enterPressed(event)}/>
               <br/>
-<<<<<<< HEAD
-=======
-              
->>>>>>> aa972cd1b8636ab8bb6e9b880e73ebaf2e015f3d
               <input class="button" type="image" onKeyPress={event => this.enterPressed(event)} src={require('./entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
 
 

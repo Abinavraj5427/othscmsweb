@@ -21,6 +21,11 @@ export default class TimerPage extends React.Component
 
   startTimer(){
     axios.post('http://localhost/othscmsbackend/startTimer.php',{
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);
@@ -30,6 +35,11 @@ export default class TimerPage extends React.Component
 
   endTimer(){
     axios.post('http://localhost/othscmsbackend/endTimer.php',{
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);

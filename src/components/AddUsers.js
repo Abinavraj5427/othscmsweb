@@ -27,7 +27,12 @@ export default class AddUsers extends React.Component
   }
 
   getTeams(){
-    axios.post(ip+'/othscmsbackend/get_teams.php',{})
+    axios.post(ip+'/othscmsbackend/get_teams.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       this.setState({users: result.data});
     })
@@ -42,6 +47,11 @@ export default class AddUsers extends React.Component
         password: pass,
         role: role,
         append: true,
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);
@@ -57,6 +67,11 @@ export default class AddUsers extends React.Component
         password: "",
         role: "",
         append: false,
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);

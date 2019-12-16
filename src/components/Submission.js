@@ -39,7 +39,8 @@ export default class Submission extends React.Component
     const config = {
       headers: {
           'Content-Type': 'multipart/form-data',
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          "Access-Control-Allow-Origin": "*",
       }
     }
 
@@ -55,7 +56,12 @@ export default class Submission extends React.Component
   }
 
   getProblems(){
-    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       this.setState({problems: result.data});
       result.data.length >=1 && this.setState({problemVal: result.data[0].problem});
@@ -69,6 +75,11 @@ export default class Submission extends React.Component
     axios.post("http://"+ip+'/othscmsbackend/confirmlogin.php',
       {
         authtoken: token,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
       })
       .then(result => {
         this.setState({user: result.data.team})

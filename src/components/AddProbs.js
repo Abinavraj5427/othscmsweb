@@ -26,7 +26,12 @@ export default class AddProbs extends React.Component
   }
 
   getProblems(){
-    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_problems.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       this.setState({problems: result.data});
     })

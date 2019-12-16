@@ -34,6 +34,11 @@ export default class JudgeClarify extends React.Component
   deleteClar(id){
     axios.post("http://"+ip+'/othscmsbackend/delete_clarification.php',{
       id ,
+  },
+  {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    }
   })
   .then(result => {
     console.log(result);
@@ -47,6 +52,11 @@ export default class JudgeClarify extends React.Component
     axios.post("http://"+ip+'/othscmsbackend/answer_clarification.php',{
         id: this.state.clarID,
         answer: this.state.answer,
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
     })
     .then(result => {
       console.log(result);
@@ -57,7 +67,12 @@ export default class JudgeClarify extends React.Component
   }
 
   getQuestions(){
-    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/get_clarifications.php',{},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
     .then(result => {
       !this.state.clarID && this.setState({clarID: result.data[0].id});
       this.setState({clarifications: result.data});
