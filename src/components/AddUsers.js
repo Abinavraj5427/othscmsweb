@@ -27,7 +27,7 @@ export default class AddUsers extends React.Component
   }
 
   getTeams(){
-    axios.post(ip+'/othscmsbackend/get_teams.php',{},
+    axios.post("http://"+ip+'/othscmsbackend/get_teams.php',{},
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
