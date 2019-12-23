@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import navstyles from './Navigation.css';
+import navstyles from '../styles/Navigation.css';
 import cookie from 'react-cookies';
 import {ip} from "../network";
 const axios = require('axios');

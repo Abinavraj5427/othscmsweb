@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import {ip} from "../network";
+import tablestyles from "../styles/tablestyles.css";
 const axios = require('axios');
 
 
@@ -42,7 +43,7 @@ export default class AddUsers extends React.Component
   addTeam(user, pass, role){
     this.setState({newUser: "", newPass: "", newRole: "COMPETITOR"})
     console.log(user);
-    axios.post(ip+'/othscmsbackend/change_teams.php',{
+    axios.post("http://"+ip+'/othscmsbackend/change_teams.php',{
         username: user,
         password: pass,
         role: role,
@@ -96,7 +97,7 @@ export default class AddUsers extends React.Component
                 <input type = 'submit' value = "Add User" onClick = {() => this.addTeam(this.state.newUser, this.state.newPass, this.state.newRole)}/>
                 
                 <h2>User List</h2>
-                <table>
+                <table class = "container">
                     <tr>
                         <th>Username</th>
                         <th>Password</th>

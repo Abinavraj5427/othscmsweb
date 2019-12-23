@@ -3,6 +3,7 @@ import cookie from 'react-cookies';
 import loginstyles from './Login.css';
 import Navigation from './Navigation';
 import {Redirect} from 'react-router-dom';
+import {ip} from "../network";
 
 const axios = require('axios');
 
@@ -15,7 +16,7 @@ export default class Timer extends React.Component {
   }
 
   updateTime(){
-    axios.post('http://localhost/othscmsbackend/timer.php', {},
+    axios.post('http://'+ip+'/othscmsbackend/timer.php', {},
     {
       headers: {
         "Access-Control-Allow-Origin": "*",

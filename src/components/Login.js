@@ -1,6 +1,6 @@
 import  React from 'react';
 import cookie from 'react-cookies';
-import loginstyles from './Login.css';
+import loginstyles from '../styles/Login.css';
 import Navigation from './Navigation';
 import {Redirect} from 'react-router-dom';
 import {ip} from "../network";
@@ -17,7 +17,6 @@ export default class Login extends React.Component {
   componentDidMount(){
    this.props.autoLogin();
    this.props.history.push('/');
-   //console.log(ip);
   }
 
   handleClick(){
@@ -78,9 +77,7 @@ export default class Login extends React.Component {
               <br/>
               <input class="password" placeholder = "Password" style = {{margin: 10}} type = 'password' value={this.state.password} onChange={event => this.setState({password: event.target.value})} onKeyPress={event => this.enterPressed(event)}/>
               <br/>
-              <input class="button" type="image" onKeyPress={event => this.enterPressed(event)} src={require('./entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
-
-
+              <input class="button" type="image" onKeyPress={event => this.enterPressed(event)} src={require('../images/entericon.jpg')} onClick={this.handleClick} height="25" width="25"/>
             </div>
           </div>
         </div>
