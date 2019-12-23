@@ -2,7 +2,9 @@ import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
 import {ip} from "../network";
+import tablestyles from "../styles/tablestyles.css";
 const axios = require('axios');
+
 
 
 
@@ -119,7 +121,7 @@ export default class TeamClarify extends React.Component
                 <input type = 'submit' value = "Add Question" onClick = {() => this.addQuestions(this.state.newQuestion)}/>
                 
                 <h2>Recently Asked</h2>
-                <table>
+                <table class = "container">
                     <tr>
                         <th>Team</th>
                         <th>Problem</th>

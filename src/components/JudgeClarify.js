@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
 import {ip} from "../network";
+import tablestyles from "../styles/tablestyles.css";
 const axios = require('axios');
 
 
@@ -121,7 +122,7 @@ export default class JudgeClarify extends React.Component
                 <h4>{this.state.message}</h4>
 
                 <h2>Recently Asked</h2>
-                <table>
+                <table class = "container">
                     <tr>
                         <th>Question ID</th>
                         <th>Team</th>

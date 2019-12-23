@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import {ip} from "../network";
+import tablestyles from "../styles/tablestyles.css";
 const axios = require('axios');
 
 
@@ -78,16 +79,22 @@ export default class AddProbs extends React.Component
                 <input type = 'submit' value = "Add Problem" onClick = {() => this.addProblem(this.state.newProbName)}/>
 
                 <h2>Problem List</h2>
-                <ul>
+                <table class = "container">
+                    <tr>   
+                      <th>Problem</th>
+                      <th>Delete</th>
+                    </tr>
                     {
-                        this.state.problems.length >=1 && this.state.problems.map(problem => 
-                            <div>
-                                <li>{problem.problem}</li>
-                                <input type = 'submit' value = "DELETE" onClick = {() => {this.deleteProblem(problem.problem)}}/>
-                            </div>
-                        )
+                      this.state.problems.length >=1 && this.state.problems.map(problem =>  
+                        <tr>
+                          <td>{problem.problem}</td>
+                          <td>
+                            <input type = 'submit' value = "DELETE" onClick = {() => {this.deleteProblem(problem.problem)}}/>
+                          </td>
+                        </tr>
+                      )
                     }
-                </ul>
+                </table>
                 
             </div>
         </div>   

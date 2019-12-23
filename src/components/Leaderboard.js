@@ -53,17 +53,28 @@ export default class Leaderboard extends React.Component {
       list.push({id:key, school:value.school, score:value.score});
       list.sort((a,b) => a.score>b.score ? -1: 1);
     }
-    let leaderboard;
-    for(let i = 0; i<list.length; i++){
-      leaderboard = <ul> {leaderboard} <li key ={list[i].id}> {list[i].school} {list[i].id} : {list[i].score}</li></ul>;
-    }
-  
     return(
       <div>
       <Navigation />
         <div>
           <h1>Leaderboard</h1>
-          {leaderboard}
+          
+          <table class = "container">
+                    <tr>
+                        <th>ID</th>
+                        <th>School</th>
+                        <th>Score</th>
+                    </tr>
+                    {
+                        list.length >=1 && list.map(item => 
+                            <tr>
+                                <td>{item.id}</td>
+                                <td>{item.school}</td>
+                                <td>{item.score}</td>
+                            </tr>
+                        )
+                    }
+                </table>
         </div>
       </div>
     );
