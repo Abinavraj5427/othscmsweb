@@ -1,8 +1,7 @@
 import  React from 'react';
 import cookie from 'react-cookies';
-import loginstyles from '../styles/Login.css';
+import '../styles/Login.css';
 import Navigation from './Navigation';
-import {Redirect} from 'react-router-dom';
 import {ip} from "../network";
 const axios = require('axios');
 
@@ -35,7 +34,8 @@ export default class Login extends React.Component {
               console.log(result);
               cookie.save('auth-token', result.data.auth_key);
               this.props.login();
-              this.props.history.push('/home');
+              result.data.role === "COMPETITOR" && this.props.history.push('/home');
+              result.data.role === "JUDGE" && this.props.history.push('/leaderboard');
             })
             .catch(error => console.log(error));
   }
@@ -60,7 +60,6 @@ export default class Login extends React.Component {
               this.props.history.push('/home');
             })
             .catch(error => console.log(error));
-                    //Do stuff in here
     }
   }
 
@@ -70,7 +69,7 @@ export default class Login extends React.Component {
       <Navigation/>
         <div class="blurred-box">
           <div class="user-login-box">
-            <div style = {loginstyles}>
+            <div>
               <h1>Login</h1>
               <br/>
               <input class="username" placeholder = "Username" style = {{margin: 10}} type = 'text' value={this.state.username} onChange={event => this.setState({username: event.target.value})} />

@@ -2,7 +2,8 @@ import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
 import {ip} from "../network";
-import tablestyles from "../styles/tablestyles.css";
+import "../styles/darkmode.css";
+import "../styles/tablestyles.css";
 const axios = require('axios');
 
 

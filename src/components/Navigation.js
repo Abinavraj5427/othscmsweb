@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import navstyles from '../styles/Navigation.css';
+import '../styles/Navigation.css';
 import cookie from 'react-cookies';
 import {ip} from "../network";
 const axios = require('axios');
@@ -49,10 +49,10 @@ class Navigation extends React.PureComponent
     render(){
 
             return(
-              <div class="nav" styles = {navstyles}>
-                <Navbar class="nav" fixed="top" >
 
-                    {this.state.role && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
+                <Navbar bg="dark" variant="dark" >
+
+                    {this.state.role == "COMPETITOR" && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
 
                     {this.state.role && <Nav className="mr-auto">
                         <Nav.Link class="leaderboard" href="/leaderboard">Leaderboards</Nav.Link>
@@ -64,6 +64,10 @@ class Navigation extends React.PureComponent
 
                     {this.state.role === "COMPETITOR" &&<Nav className="mr-auto">
                         <Nav.Link class="teamclarify" href="/teamclarify">Clarifications</Nav.Link>
+                    </Nav>}
+
+                    {this.state.role === "COMPETITOR" &&<Nav className="mr-auto">
+                        <Nav.Link class="teamclarify" href="/viewruns">View Runs</Nav.Link>
                     </Nav>}
 
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
@@ -90,9 +94,8 @@ class Navigation extends React.PureComponent
                     {!this.state.role && <Nav className="ml-auto">
                         <Nav.Link href="/">Log In</Nav.Link>
                     </Nav>}
-                    <div class="the-blur"></div>
                 </Navbar>
-              </div>
+
             );
 
     }

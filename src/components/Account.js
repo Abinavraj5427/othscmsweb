@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
 import {Redirect} from 'react-router-dom';
+import "../styles/darkmode.css";
 
 export default class Account extends React.Component{
   constructor(props){

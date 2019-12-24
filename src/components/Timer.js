@@ -1,6 +1,6 @@
 import  React from 'react';
 import cookie from 'react-cookies';
-import loginstyles from './Login.css';
+import "../styles/darkmode.css";
 import Navigation from './Navigation';
 import {Redirect} from 'react-router-dom';
 import {ip} from "../network";

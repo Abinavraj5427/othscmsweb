@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import "../styles/darkmode.css";
 const axios = require('axios');
 
 

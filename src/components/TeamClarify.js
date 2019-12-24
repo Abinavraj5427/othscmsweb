@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import cookie from 'react-cookies';
 import {ip} from "../network";
+import "../styles/darkmode.css";
 import tablestyles from "../styles/tablestyles.css";
 const axios = require('axios');
 
