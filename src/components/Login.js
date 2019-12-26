@@ -57,7 +57,8 @@ export default class Login extends React.Component {
               console.log(result);
               cookie.save('auth-token', result.data.auth_key);
               this.props.login();
-              this.props.history.push('/home');
+              result.data.role === "COMPETITOR" && this.props.history.push('/home');
+              result.data.role === "JUDGE" && this.props.history.push('/leaderboard');
             })
             .catch(error => console.log(error));
     }

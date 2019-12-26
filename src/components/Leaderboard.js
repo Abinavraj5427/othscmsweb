@@ -9,7 +9,6 @@ export default class Leaderboard extends React.Component {
     super(props);
     this.state = { username:'',
       password:'',
-      shouldDisplay:false,
       authenticated: this.props.authenticated,
       teams:[
         {
@@ -23,13 +22,9 @@ export default class Leaderboard extends React.Component {
            }
          ]
         };
-    this.handleClick = this.handleClick.bind(this);
     this.pullData = this.pullData.bind(this);
   }
 
-  handleClick(){
-    this.setState(state => ({shouldDisplay:!state.shouldDisplay}));
-  }
 
   componentDidMount(){
     this.props.autoLogin();
