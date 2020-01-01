@@ -88,6 +88,9 @@ class Navigation extends React.PureComponent
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
 
+                    {this.state.role === "JUDGE" &&<Nav className="mr-auto">
+                        <Nav.Link class="timerPage" href="/timer">Timer</Nav.Link>
+                    </Nav>}
                     <Nav class="timerDisplay" >{this.state.timer}</Nav>
                     {this.state.role &&
                         <Nav className="ml-auto">
