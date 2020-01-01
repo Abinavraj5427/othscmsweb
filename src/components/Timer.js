@@ -36,7 +36,7 @@ export default class Timer extends React.Component {
     var seconds = (total);
     return(
       <div>
-        <p>Timer: {hours.toString().padStart(2, "0")}:{minutes.toString().padStart(2, "0")}:{seconds.toString().padStart(2, "0")}</p>
+        <p>Timer: {Math.max(hours, 0).toString().padStart(2, "0")}:{Math.max(minutes, 0).toString().padStart(2, "0")}:{Math.max(seconds, 0).toString().padStart(2, "0")}</p>
       </div>
     );
   }
