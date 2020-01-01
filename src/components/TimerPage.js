@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import "../styles/darkmode.css";
+import {ip} from "../network.js";
 const axios = require('axios');
 
 
@@ -14,6 +15,7 @@ export default class TimerPage extends React.Component
     this.state = {};
     this.startTimer = this.startTimer.bind(this);
     this.endTimer = this.endTimer.bind(this);
+    this.pauseTimer = this.pauseTimer.bind(this);
   }
 
   componentDidMount(){
@@ -21,7 +23,21 @@ export default class TimerPage extends React.Component
   }
 
   startTimer(){
-    axios.post('http://localhost/othscmsbackend/startTimer.php',{
+    axios.post('http://'+ip+'/othscmsbackend/startTimer.php',{
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(error => console.log(error));
+  }
+
+  pauseTimer(){
+    axios.post('http://'+ip+'/othscmsbackend/pauseTimer.php',{
     },
     {
       headers: {
@@ -35,7 +51,7 @@ export default class TimerPage extends React.Component
   }
 
   endTimer(){
-    axios.post('http://localhost/othscmsbackend/endTimer.php',{
+    axios.post('http://'+ip+'/othscmsbackend/endTimer.php',{
     },
     {
       headers: {
@@ -54,9 +70,9 @@ export default class TimerPage extends React.Component
         <div>
             <Navigation/>
             <div>
-                <input type = 'submit' value = "Start Timer" onClick = {() => this.startTimer()}/>
+                  <input type = 'submit' value = "Start Timer" onClick = {() => this.startTimer()}/>
                   <input type = 'submit' value = "End Timer" onClick = {() => this.endTimer()}/>
-
+                  <input type = 'submit' value = "Pause Timer" onClick = {() => this.pauseTimer()}/>
             </div>
         </div>
     );
