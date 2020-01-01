@@ -1,0 +1,29 @@
+
+*{
+ margin: 0;
+ padding: 0;
+}
+
+html{
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+
+  font-family: "Rubik","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 900;
+  color: white;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+
+.timerDisplay{
+  font-family: "Rubik","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 900;
+  color:white;
+}
