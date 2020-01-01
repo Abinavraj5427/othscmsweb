@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Timer from './Timer.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Navigation.css';
 import cookie from 'react-cookies';
@@ -13,6 +14,7 @@ class Navigation extends React.PureComponent
         super(props);
         this.state = {
             role: undefined,
+            timer: <Timer />
         }
         this.getRole = this.getRole.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
@@ -85,7 +87,7 @@ class Navigation extends React.PureComponent
                     {this.state.role === "JUDGE" &&<Nav className="mr-auto">
                         <Nav.Link class="judgeclarify" href="/judgeclarify">Clarifications</Nav.Link>
                     </Nav>}
-                    
+
                     <Nav class="timerDisplay" >{this.state.timer}</Nav>
                     {this.state.role &&
                         <Nav className="ml-auto">
