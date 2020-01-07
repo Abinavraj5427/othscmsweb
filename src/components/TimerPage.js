@@ -48,6 +48,17 @@ export default class TimerPage extends React.Component
       console.log(result);
     })
     .catch(error => console.log(error));
+    axios.post('http://'+ip+'/othscmsbackend/pauseTimer.php',{
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(error => console.log(error));
   }
 
   endTimer(){
