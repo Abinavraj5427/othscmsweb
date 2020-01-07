@@ -19,7 +19,7 @@ export default class RunPopup extends React.Component {
     }
 
     collectProblemData(){
-      axios.post("http://"+ip+'/othscmsbackend/problemdata.php', 
+      axios.post("http://"+ip+'/othscmsbackend/problemdata.php',
       {
         id: this.props.id,
       },
@@ -33,6 +33,7 @@ export default class RunPopup extends React.Component {
             filePath: result.data.filePath,
             systemTime: result.data.systemTime,
             team: result.data.team,
+            code: result.data.code,
           });
         console.log(result)
       }).catch(error => console.log(error));
@@ -42,9 +43,10 @@ export default class RunPopup extends React.Component {
       return (
         <div className='popup'>
           <div className='popup_inner'>
-            <h2>{this.state.filePath}</h2>
+            {/*}<h2>{this.state.filePath}</h2>
             <h2>{this.state.systemTime}</h2>
-            <h2>{this.state.team}</h2>
+            <h2>{this.state.team}</h2>*/}
+            <p>{this.state.code}</p>
             <button onClick={this.props.closePopup}>close me</button>
           </div>
         </div>

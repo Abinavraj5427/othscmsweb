@@ -48,7 +48,7 @@ export default class Grade extends React.Component {
       <Navigation />
         <div>
           <h1>Grade</h1>
-          
+
         {this.state.showPopup && <RunPopup closePopup = {this.togglePopup} id = {this.state.curId}/>}
 
           <table class = "container">
@@ -58,11 +58,11 @@ export default class Grade extends React.Component {
                         <th>Run</th>
                     </tr>
                     {
-                        list.length >=1 && list.map(item => 
+                        list.length >=1 && list.map(item =>
                             <tr>
                                 <td>{item.user}</td>
                                 <td>{item.problemName}</td>
-                                <td><input type = "submit" value = "RUN" onClick = {() => 
+                                <td><input type = "submit" value = "RUN" onClick = {() =>
                                     {
                                         this.setState({curId: item.id});
                                         this.togglePopup();
