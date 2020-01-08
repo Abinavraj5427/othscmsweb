@@ -21,10 +21,7 @@ export default class Error404 extends React.Component
         <div>
             <Navigation/>   
             <div>
-                <h1>ERROR 404</h1>
-                <br/>
-                <p>DON'T CHEAT THE SYSTEM!!!!!</p>
-                <b>The pAgE yOu wErE lOokInG fOr wAs noT fOuNd.</b>
+                <h1>Please use the navigation bar to get back.</h1>
             </div>
         </div>   
     );
