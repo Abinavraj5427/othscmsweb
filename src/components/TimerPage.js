@@ -40,8 +40,8 @@ export default class TimerPage extends React.Component
   }
 
   pauseTimer(){
-    console.log("Pausing");
     axios.post('http://'+ip+'/othscmsbackend/pauseTimer.php',{
+      ispreflight: 3
     },
     {
       headers: {

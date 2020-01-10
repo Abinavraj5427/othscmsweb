@@ -21,11 +21,25 @@ const axios = require('axios');
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {authenticated: false, role: undefined};
+    this.state = {timeSeconds: 0, authenticated: false, role: undefined};
     this.autoLogin = this.autoLogin.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.updateTime = this.updateTime.bind(this);
     this.autoLogin();
+    setInterval(this.updateTime, 1000);
+  }
+
+  updateTime(){
+    axios.post('http://'+ip+'/othscmsbackend/timer.php', {},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(result=>{
+      this.setState({timeSeconds:result.data});
+    }).catch(error => console.log(error));
+
   }
 
   componentDidMount(){
@@ -70,13 +84,13 @@ export default class App extends React.Component {
           {this.state.authenticated && this.state.role === "JUDGE" &&  <Route exact path='/addprobs' render = {(props) => <AddProbs {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
           {this.state.authenticated && this.state.role === "JUDGE" &&  <Route exact path='/timer' render =  {(props)=><TimerPage />} />}
           {this.state.authenticated && <Route exact path='/leaderboard' render = {(props) => <Leaderboard {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
-          {this.state.authenticated && this.state.role === "COMPETITOR" &&  <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role === "COMPETITOR" &&  <Route exact path='/submit' render = {(props) => <Submission {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} time = {this.state.timeSeconds}/>} />}
           {this.state.authenticated && <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />}
           {this.state.authenticated && this.state.role === "COMPETITOR" &&  <Route exact path='/home' render = {(props) => <Home {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
           {this.state.authenticated && this.state.role === "JUDGE" &&  <Route exact path='/grade' render = {(props) => <Grade {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
           {!this.state.authenticated && <Route exact path='/' render = {(props) => <Login {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />}
-          <Route component={Error404} /> 
-          
+          <Route component={Error404} />
+
 
         </Switch>
       </Router>
