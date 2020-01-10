@@ -7,10 +7,10 @@ const axios = require('axios');
 
 
 
-export default class Submission extends React.Component 
+export default class Submission extends React.Component
 {
-    
-  constructor(props) 
+
+  constructor(props)
   {
     super(props);
     this.state = {
@@ -18,6 +18,7 @@ export default class Submission extends React.Component
         file: undefined,
         problems: [],
         problemVal:undefined,
+        time: 0
     }
     this.saveFile = this.saveFile.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
@@ -36,7 +37,7 @@ export default class Submission extends React.Component
   }
 
   uploadFile(){
-    
+
     const config = {
       headers: {
           'Content-Type': 'multipart/form-data',
@@ -91,13 +92,13 @@ export default class Submission extends React.Component
   {
     return(
         <div>
-            <Navigation/>   
+            <Navigation/>
             <div>
                 <h1>Submission</h1>
                 <hr/>
                 <select onChange  = {(e) => this.setState({problemVal: e.target.value})}>
                   {
-                    this.state.problems.length >= 1 && this.state.problems.map(problem => 
+                    this.state.problems.length >= 1 && this.state.problems.map(problem =>
                       <option key = {problem.id} value = {problem.problem}>{problem.problem}</option>
                     )
                   }
@@ -107,9 +108,10 @@ export default class Submission extends React.Component
                 <br/>
                 <input type="file"  name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
                 <br/>
-                <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>
+                {this.props.time>0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
+                {this.props.time<=0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}} disabled/>}
             </div>
-        </div>   
+        </div>
     );
   }
 }

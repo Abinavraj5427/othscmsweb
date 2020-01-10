@@ -23,8 +23,10 @@ export default class Timer extends React.Component {
       }
     }).then(result=>{
       this.setState({timeSeconds:result.data});
-      console.log(result.data);
     }).catch(error => console.log(error));
+    if(this.state.timeSeconds<=0){
+
+    }
   }
 
   render(){
