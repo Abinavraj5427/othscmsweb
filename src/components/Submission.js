@@ -27,8 +27,21 @@ export default class Submission extends React.Component
 
   componentDidMount(){
     this.props.autoLogin();
+
+    axios.post('http://'+ip+'/othscmsbackend/timer.php', {},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(result=>{
+      this.setState({timeSeconds:result.data});
+    }).catch(error => console.log(error));
+
+
     this.getProblems();
     this.setUser();
+
+
   }
 
   saveFile = (event) => {
@@ -66,7 +79,9 @@ export default class Submission extends React.Component
     })
     .then(result => {
       this.setState({problems: result.data});
-      result.data.length >=1 && this.setState({problemVal: result.data[0].problem});
+      console.log(this.state.timeSeconds);
+      (result.data.length >=1) && this.setState({problemVal: result.data[0].problem});
+      this.state.timeSeconds<=0 && this.setState({problems:[result.data[0]]});
     })
     .catch(error => console.log(error));
   }
