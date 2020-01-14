@@ -42,6 +42,7 @@ export default class Submission extends React.Component
   componentDidMount(){
     this.props.autoLogin();
 
+    //move to function
     axios.post('http://'+ip+'/othscmsbackend/timer.php', {},
     {
       headers: {

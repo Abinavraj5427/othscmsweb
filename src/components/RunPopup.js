@@ -34,27 +34,28 @@ export default class RunPopup extends React.Component {
             systemTime: result.data.systemTime,
             team: result.data.team,
             code: result.data.code,
-
           });
         console.log(result)
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
       }).catch(error => console.log(error));
     }
 
     render() {
+      console.log(this.state.code);
       return (
         <div className='popup'>
           <div className='popup_inner'>
-            {
-              /*<h2>{this.state.filePath}</h2>
+            
+              {/* <h2>{this.state.filePath}</h2>
               <h2>{this.state.systemTime}</h2>
-              <h2>{this.state.team}</h2>
-              {this.state.code.map(line => <div> <h2>{line}</h2> <br/></div>)}
-*/
-            }
-            myArr = ['abc', 'def','ghi'];
+              <h2>{this.state.team}</h2> */}
+              {/* {this.state.code.map(line => <div> <h2>{line}</h2> <br/></div>)} */}
+
+            
+            {/* myArr = ['abc', 'def','ghi'];
             myArr.forEach((element)=>{
               <h2>{element}</h2>
-            })
+            }) */}
 
             <button onClick={this.props.closePopup}>close me</button>
           </div>
