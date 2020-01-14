@@ -23,6 +23,20 @@ export default class Submission extends React.Component
     this.saveFile = this.saveFile.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.getProblems = this.getProblems.bind(this);
+    this.updateTime = this.updateTime.bind(this);
+    setInterval(100, this.updateTime);
+  }
+
+  updateTime(){
+    axios.post('http://'+ip+'/othscmsbackend/timer.php', {},
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(result=>{
+      this.setState({timeSeconds:result.data});
+    }).catch(error => console.log(error));
+
   }
 
   componentDidMount(){
@@ -79,9 +93,17 @@ export default class Submission extends React.Component
     })
     .then(result => {
       this.setState({problems: result.data});
-      console.log(this.state.timeSeconds);
-      (result.data.length >=1) && this.setState({problemVal: result.data[0].problem});
-      this.state.timeSeconds<=0 && this.setState({problems:[result.data[0]]});
+      if(this.state.timeSeconds<=0){
+        let i;
+        for(i = 0; i<result.data.length; i++){
+          console.log(result.data[i].problem);
+          if(result.data[i].problem.localeCompare("DryRun")==0){
+            this.setState({problems: [result.data[i]]});
+            break;
+          }
+      }
+      }
+
     })
     .catch(error => console.log(error));
   }
