@@ -54,7 +54,7 @@ class Navigation extends React.PureComponent
 
                 <Navbar bg="dark" variant="dark" >
 
-                    {this.state.role == "COMPETITOR" && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
+                    {this.state.role === "COMPETITOR" && <Navbar.Brand class="home" href="/home">Home</Navbar.Brand>}
 
                     {this.state.role && <Nav className="mr-auto">
                         <Nav.Link class="leaderboard" href="/leaderboard">Leaderboards</Nav.Link>
