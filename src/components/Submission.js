@@ -24,7 +24,7 @@ export default class Submission extends React.Component
     this.uploadFile = this.uploadFile.bind(this);
     this.getProblems = this.getProblems.bind(this);
     this.updateTime = this.updateTime.bind(this);
-    setInterval(100, this.updateTime);
+    setInterval(500, this.updateTime);
   }
 
   updateTime(){
