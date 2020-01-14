@@ -15,7 +15,7 @@ export default class Submission extends React.Component
     super(props);
     this.state = {
         authenticated: this.props.authenticated,
-        file: undefined,
+        file: null,
         problems: [],
         problemVal:undefined,
         time: 0
@@ -51,10 +51,14 @@ export default class Submission extends React.Component
     formData.append("team", this.state.user);
     formData.append("problem", this.state.problemVal);
 
-    axios.post("http://"+ip+'/othscmsbackend/upload.php', formData, config
-    ).then(result=>{
-      console.log(result);
-    }).catch(error => console.log(error));
+    axios.post("http://"+ip+'/othscmsbackend/upload.php', formData, config)
+    .then(this.setState({message: "successfully submitted file"}))
+    .catch(error => {
+      console.log(error)
+      this.setState({message: "failed to submit file"})
+    });
+    this.setState({file: null});
+    this.refs.fileSubmit.value = null;
   }
 
   getProblems(){
@@ -106,10 +110,13 @@ export default class Submission extends React.Component
                 <br/>
                 <label>Submit a java file:</label>
                 <br/>
-                <input type="file"  name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
+                <form>
+                  <input type="file" ref = "fileSubmit" name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
+                </form>
                 <br/>
                 {this.props.time>0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
                 {this.props.time<=0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}} disabled/>}
+                <h2>{this.state.message}</h2>
             </div>
         </div>
     );
