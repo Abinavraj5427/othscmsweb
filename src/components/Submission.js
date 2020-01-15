@@ -36,7 +36,7 @@ export default class Submission extends React.Component
     }).then(result=>{
       this.setState({timeSeconds:result.data});
     }).catch(error => console.log(error));
-
+    this.getProblems();
   }
 
   componentDidMount(){
@@ -96,6 +96,7 @@ export default class Submission extends React.Component
       }
     })
     .then(result => {
+      console.log(this.state);
       this.setState({problems: result.data});
       if(this.state.timeSeconds<=0){
         let i;
@@ -131,6 +132,7 @@ export default class Submission extends React.Component
 
   render()
   {
+    
     return(
         <div>
             <Navigation/>
