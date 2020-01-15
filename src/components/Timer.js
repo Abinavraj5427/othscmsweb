@@ -1,8 +1,5 @@
 import  React from 'react';
-import cookie from 'react-cookies';
 import "../styles/darkmode.css";
-import Navigation from './Navigation';
-import {Redirect} from 'react-router-dom';
 import {ip} from "../network";
 
 const axios = require('axios');

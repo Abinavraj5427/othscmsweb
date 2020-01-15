@@ -10,6 +10,7 @@ export default class RunPopup extends React.Component {
         filePath: '',
         systemTime: '',
         team: '',
+        code: [],
       }
       this.collectProblemData = this.collectProblemData.bind(this);
     }
@@ -35,18 +36,23 @@ export default class RunPopup extends React.Component {
             team: result.data.team,
             code: result.data.code,
           });
-        console.log(result)
       }).catch(error => console.log(error));
     }
 
     render() {
+
       return (
-        <div className='popup'>
-          <div className='popup_inner'>
-            {/*}<h2>{this.state.filePath}</h2>
-            <h2>{this.state.systemTime}</h2>
-            <h2>{this.state.team}</h2>*/}
-            <p>{this.state.code}</p>
+        <div  className='popup'>
+          <div class="codeFile" className='popup_inner'>
+
+              {/* <h2>{this.state.filePath}</h2>
+              <h2>{this.state.systemTime}</h2>
+              <h2>{this.state.team}</h2> <h2>{ans}</h2>*/}
+
+              {this.state.code && this.state.code.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
+
+
+
             <button onClick={this.props.closePopup}>close me</button>
           </div>
         </div>

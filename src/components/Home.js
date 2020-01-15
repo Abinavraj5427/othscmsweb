@@ -76,9 +76,9 @@ export default class Home extends React.Component
         "Access-Control-Allow-Origin": "*",
       }
     }).then(result=>{
-      index == 1 && this.setState({member1: result.data});
-      index == 2 && this.setState({member2: result.data});
-      index == 3 && this.setState({member3: result.data});
+      index === 1 && this.setState({member1: result.data});
+      index === 2 && this.setState({member2: result.data});
+      index === 3 && this.setState({member3: result.data});
     }).catch(error => console.log(error));
   }
 
