@@ -13,8 +13,18 @@
     position: absolute;
     left: 25%;
     right: 25%;
-    top: 25%;
-    bottom: 25%;
+    top: 10%;
+    bottom: 10%;
     margin: auto;
     background: white;
+  }
+  .codeFile h1 {
+    text-align: left;
+    color: black;
+    font-size: 20px;
+    margin-bottom: -3px;
+  }
+
+  select{
+    margin-top: 30px;
   }

@@ -14,9 +14,31 @@ export default class Grade extends React.Component {
       authenticated: this.props.authenticated,
       pending:[ ],
       showPopup: false,
+      showMenu: false,
+
         };
     this.pullData = this.pullData.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.showMenu = this.showMenu.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
+  }
+  showMenu(event) {
+    event.preventDefault();
+
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
+  }
+
+  closeMenu(event) {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+      this.setState({ showMenu: false }, () => {
+        document.removeEventListener('click', this.closeMenu);
+      });
+
+    }
   }
 
   togglePopup() {
@@ -55,19 +77,43 @@ export default class Grade extends React.Component {
                     <tr>
                         <th>Team</th>
                         <th>Problem</th>
+                        <th>Status</th>
                         <th>Run</th>
+
+                        <th>Description</th>
+
                     </tr>
                     {
                         list.length >=1 && list.map(item =>
                             <tr>
                                 <td>{item.user}</td>
                                 <td>{item.problemName}</td>
+                                <select>
+                                  <option value="PENDING">PENDING</option>
+                                  <option value="CORRECT">CORRECT</option>
+                                  <option value="INCORRECT">INCORRECT</option>
+                                </select>
+
+
                                 <td><input type = "submit" value = "RUN" onClick = {() =>
                                     {
                                         this.setState({curId: item.id});
                                         this.togglePopup();
                                     }
-                                    }/></td>
+                                    }/>
+                                </td>
+                                <select>
+                                  <option value="None">NONE</option>
+                                  <option value="Runtime Error">RUNTIME ERROR</option>
+                                  <option value="Compilation Error">COMPILATION ERROR </option>
+                                  <option value="Incorrect Output">INCORRECT OUTPUT </option>
+                                </select>
+                                {/*<td><input type="text" value={item.description} onClick ={() =>
+                                  {
+                                    this.setStatus({curId: item.description});//figure out how to change this
+                                  }
+                                }/>
+                                  </td>*/}
                             </tr>
                         )
                     }
