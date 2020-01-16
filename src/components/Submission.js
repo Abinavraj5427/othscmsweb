@@ -133,7 +133,7 @@ export default class Submission extends React.Component
 
   render()
   {
-    
+
     return(
         <div>
             <Navigation/>
@@ -154,8 +154,8 @@ export default class Submission extends React.Component
                   <input type="file" ref = "fileSubmit" name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
                 </form>
                 <br/>
-                {this.props.time>0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
-                {this.props.time<=0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}} disabled/>}
+                {this.state.timeSeconds>0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
+                {this.state.timeSeconds<=0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}} disabled/>}
                 <h2>{this.state.message}</h2>
             </div>
         </div>
