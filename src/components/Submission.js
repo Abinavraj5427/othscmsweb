@@ -154,8 +154,7 @@ export default class Submission extends React.Component
                   <input type="file" ref = "fileSubmit" name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
                 </form>
                 <br/>
-                {this.state.timeSeconds>0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
-                {this.state.timeSeconds<=0 && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}} disabled/>}
+              <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>
                 <h2>{this.state.message}</h2>
             </div>
         </div>
