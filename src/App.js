@@ -12,6 +12,7 @@ import ViewRuns from './components/ViewRuns';
 import TeamClarify from './components/TeamClarify';
 import JudgeClarify from './components/JudgeClarify';
 import Grade from './components/Grade';
+import Written from './components/Written';
 import Error404 from './components/Error404';
 import cookie from 'react-cookies';
 import {ip} from "./network";
@@ -88,6 +89,7 @@ export default class App extends React.Component {
           {this.state.authenticated && <Route exact path='/account' render = {(props) => <Account {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} logout={this.logout}/>} />}
           {this.state.authenticated && this.state.role === "COMPETITOR" &&  <Route exact path='/home' render = {(props) => <Home {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
           {this.state.authenticated && this.state.role === "JUDGE" &&  <Route exact path='/grade' render = {(props) => <Grade {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
+          {this.state.authenticated && this.state.role === "JUDGE" &&  <Route exact path='/written' render = {(props) => <Written {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated}/>} />}
           {!this.state.authenticated && <Route exact path='/' render = {(props) => <Login {...props} autoLogin = {this.autoLogin} authenticated = {this.state.authenticated} login={this.login}/>} />}
           <Route component={Error404} />
 

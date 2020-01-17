@@ -11,6 +11,7 @@ export default class RunPopup extends React.Component {
         systemTime: '',
         team: '',
         code: [],
+        description: '',
       }
       this.collectProblemData = this.collectProblemData.bind(this);
     }
@@ -52,6 +53,12 @@ export default class RunPopup extends React.Component {
               {this.state.code && this.state.code.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
 
 
+              <select>
+                <option value="None">NONE</option>
+                <option value="Runtime Error">RUNTIME ERROR</option>
+                <option value="Compilation Error">COMPILATION ERROR </option>
+                <option value="Incorrect Output">INCORRECT OUTPUT </option>
+              </select>
 
             <button onClick={this.props.closePopup}>close me</button>
           </div>

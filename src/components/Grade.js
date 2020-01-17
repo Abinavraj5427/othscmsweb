@@ -80,8 +80,6 @@ export default class Grade extends React.Component {
                         <th>Status</th>
                         <th>Run</th>
 
-                        <th>Description</th>
-
                     </tr>
                     {
                         list.length >=1 && list.map(item =>
@@ -102,12 +100,7 @@ export default class Grade extends React.Component {
                                     }
                                     }/>
                                 </td>
-                                <select>
-                                  <option value="None">NONE</option>
-                                  <option value="Runtime Error">RUNTIME ERROR</option>
-                                  <option value="Compilation Error">COMPILATION ERROR </option>
-                                  <option value="Incorrect Output">INCORRECT OUTPUT </option>
-                                </select>
+                                
                                 {/*<td><input type="text" value={item.description} onClick ={() =>
                                   {
                                     this.setStatus({curId: item.description});//figure out how to change this
