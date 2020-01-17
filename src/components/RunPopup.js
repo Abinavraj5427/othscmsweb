@@ -46,6 +46,7 @@ export default class RunPopup extends React.Component {
         <div  className='popup'>
           <div class="codeFile" className='popup_inner'>
 
+          <button onClick={this.props.closePopup}>close me</button>
               {/* <h2>{this.state.filePath}</h2>
               <h2>{this.state.systemTime}</h2>
               <h2>{this.state.team}</h2> <h2>{ans}</h2>*/}
@@ -60,7 +61,7 @@ export default class RunPopup extends React.Component {
                 <option value="Incorrect Output">INCORRECT OUTPUT </option>
               </select>
 
-            <button onClick={this.props.closePopup}>close me</button>
+            
           </div>
         </div>
       );
