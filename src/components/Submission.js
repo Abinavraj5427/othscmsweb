@@ -105,6 +105,7 @@ export default class Submission extends React.Component
           console.log(result.data[i].problem);
           if(result.data[i].problem.localeCompare("DryRun")==0){
             this.setState({problems: [result.data[i]]});
+            this.setState({problemVal: result.data[i].problem})
             break;
           }
       }
