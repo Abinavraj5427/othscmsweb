@@ -101,12 +101,7 @@ export default class Grade extends React.Component {
                                     }/>
                                 </td>
                                 
-                                {/*<td><input type="text" value={item.description} onClick ={() =>
-                                  {
-                                    this.setStatus({curId: item.description});//figure out how to change this
-                                  }
-                                }/>
-                                  </td>*/}
+                              
                             </tr>
                         )
                     }
