@@ -35,6 +35,8 @@ export default class Submission extends React.Component
       }
     }).then(result=>{
       this.setState({timeSeconds:result.data});
+      //console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+      this.getProblems();
     }).catch(error => console.log(error));
     this.getProblems();
   }
@@ -97,7 +99,8 @@ export default class Submission extends React.Component
       }
     })
     .then(result => {
-      console.log(this.state);
+      
+      //console.log(this.state);
       this.setState({problems: result.data});
       if(this.state.timeSeconds<=0){
         let i;
@@ -105,6 +108,7 @@ export default class Submission extends React.Component
           console.log(result.data[i].problem);
           if(result.data[i].problem.localeCompare("DryRun")==0){
             this.setState({problems: [result.data[i]]});
+            this.setState({problemVal: result.data[i].problem})
             break;
           }
       }
@@ -154,7 +158,7 @@ export default class Submission extends React.Component
                   <input type="file" ref = "fileSubmit" name="submission" accept=".java" onChange = {event => this.saveFile(event)}></input>
                 </form>
                 <br/>
-              <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>
+              {this.state.file && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
                 <h2>{this.state.message}</h2>
             </div>
         </div>

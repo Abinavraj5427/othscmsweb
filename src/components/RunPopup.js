@@ -11,6 +11,7 @@ export default class RunPopup extends React.Component {
         systemTime: '',
         team: '',
         code: [],
+        description: '',
       }
       this.collectProblemData = this.collectProblemData.bind(this);
     }
@@ -55,7 +56,7 @@ export default class RunPopup extends React.Component {
 
               {this.state.output && this.state.output.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
 
-            <button onClick={this.props.closePopup}>close me</button>
+
           </div>
           <div className='popup_right'>
             {this.state.output}

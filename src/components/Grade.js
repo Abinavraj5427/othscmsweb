@@ -21,7 +21,47 @@ export default class Grade extends React.Component {
     this.togglePopup = this.togglePopup.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.runSub = this.runSub.bind(this);
   }
+
+  runSub(problemName){
+    var filedPath;
+    console.log(this.state.pending);
+
+    axios.post("http://"+ip+'/othscmsbackend/problemdata.php',
+    {
+      id: this.state.curId,
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      }
+    }).then(result=>{
+      this.setState(
+        {
+          filePath: result.data.filePath,
+          systemTime: result.data.systemTime,
+          team: result.data.team,
+          code: result.data.code,
+        });
+        filedPath = result.data.filePath;
+        axios.post("http://"+ip+'/othscmsbackend/runSubmission.php',
+        {
+          filePath: filedPath,
+          problem: problemName
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
+        }).then(result=>{
+          console.log(result);
+        }).catch(error => console.log(error));
+    }).catch(error => console.log(error));
+
+
+  }
+
   showMenu(event) {
     event.preventDefault();
 
@@ -80,8 +120,6 @@ export default class Grade extends React.Component {
                         <th>Status</th>
                         <th>Run</th>
 
-                        <th>Description</th>
-
                     </tr>
                     {
                         list.length >=1 && list.map(item =>
@@ -98,7 +136,8 @@ export default class Grade extends React.Component {
                                 <td><input type = "submit" value = "RUN" onClick = {() =>
                                     {
                                         this.setState({curId: item.id});
-                                        this.togglePopup();
+                                          this.togglePopup();
+                                          this.runSub(item.problemName);
                                     }
                                     }/>
                                 </td>
@@ -108,7 +147,7 @@ export default class Grade extends React.Component {
                                   <option value="Compilation Error">COMPILATION ERROR </option>
                                   <option value="Incorrect Output">INCORRECT OUTPUT </option>
                                 </select>
-                                
+
                             </tr>
                         )
                     }
