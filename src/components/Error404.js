@@ -21,7 +21,9 @@ export default class Error404 extends React.Component
         <div>
             <Navigation/>   
             <div>
-                <h1>Please use the navigation bar to get back.</h1>
+                <h1>PAGE IS STILL LOADING</h1>
+                <h1>Please use the navigation bar to get back if that is loaded or wait a little longer.</h1>
+                <h2>If error still persists, please contact judges.</h2>
             </div>
         </div>   
     );
