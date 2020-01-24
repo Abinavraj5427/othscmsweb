@@ -141,7 +141,7 @@ export default class Grade extends React.Component {
                                     }
                                     }/>
                                 </td>
-<<<<<<< HEAD
+
 
                                 {/*<td><input type="text" value={item.description} onClick ={() =>
                                   {
@@ -149,7 +149,6 @@ export default class Grade extends React.Component {
                                   }
                                 }/>
                                   </td>*/}
-=======
                                 <select>
                                   <option value="None">NONE</option>
                                   <option value="Runtime Error">RUNTIME ERROR</option>
@@ -157,7 +156,6 @@ export default class Grade extends React.Component {
                                   <option value="Incorrect Output">INCORRECT OUTPUT </option>
                                 </select>
 
->>>>>>> 25c3e90d5c7e69a00545f48bd06f78701aebb921
                             </tr>
                         )
                     }
