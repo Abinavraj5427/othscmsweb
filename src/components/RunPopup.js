@@ -47,7 +47,7 @@ export default class RunPopup extends React.Component {
         <div  className='popup'>
           <div class="codeFile" className='popup_left'>
 
-              <input type = "submit" onClick = {() => {this.props.closePopup()}}/>
+              <button onClick={this.props.closePopup}>close me</button>
               {/* <h2>{this.state.filePath}</h2>
               <h2>{this.state.systemTime}</h2>
               <h2>{this.state.team}</h2> <h2>{ans}</h2>
