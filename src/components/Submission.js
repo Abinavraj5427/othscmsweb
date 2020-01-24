@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import "../styles/darkmode.css";
+import Timer from './Timer.js'
 import cookie from 'react-cookies';
 import {ip} from "../network";
 const axios = require('axios');
@@ -99,7 +100,7 @@ export default class Submission extends React.Component
       }
     })
     .then(result => {
-      
+
       //console.log(this.state);
       this.setState({problems: result.data});
       if(this.state.timeSeconds<=0){
@@ -164,6 +165,7 @@ export default class Submission extends React.Component
                 <br/>
               {this.state.file && <input type = "submit" value = "Submit Run" onClick = {() => {this.uploadFile()}}/>}
                 <h2>{this.state.message}</h2>
+                <Timer />
             </div>
         </div>
     );

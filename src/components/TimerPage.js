@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import Timer from './Timer';
 import "../styles/darkmode.css";
 import {ip} from "../network.js";
 const axios = require('axios');
@@ -96,6 +97,8 @@ export default class TimerPage extends React.Component
                   <input type = "text" placeholder = "Seconds to extend" value = {this.state.timeExtend} onChange={event => this.setState({timeExtend: event.target.value})}/>
                   <input type ="submit" value = "Extend Timer" onClick = {() => this.extendTimer(this.state.timeExtend)}/>
             </div>
+
+            <Timer />
         </div>
     );
   }
