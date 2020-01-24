@@ -141,7 +141,6 @@ export default class Grade extends React.Component {
                                     }
                                     }/>
                                 </td>
-<<<<<<< HEAD
 
                                 {/*<td><input type="text" value={item.description} onClick ={() =>
                                   {
@@ -149,10 +148,6 @@ export default class Grade extends React.Component {
                                   }
                                 }/>
                                   </td>*/}
-=======
-                                
-                              
->>>>>>> dbba6d268ea910ba4efbcea209a6bc91777ca862
                             </tr>
                         )
                     }
