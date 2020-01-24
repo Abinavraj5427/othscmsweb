@@ -11,6 +11,7 @@ export default class RunPopup extends React.Component {
         systemTime: '',
         team: '',
         code: [],
+        output: [],
         description: '',
       }
       this.collectProblemData = this.collectProblemData.bind(this);
@@ -36,6 +37,7 @@ export default class RunPopup extends React.Component {
             systemTime: result.data.systemTime,
             team: result.data.team,
             output: result.data.output,
+            code: result.data.code,
           });
           console.log(result.data);
       }).catch(error => console.log(error));
@@ -55,12 +57,12 @@ export default class RunPopup extends React.Component {
 
               */}
 
-              {this.state.output && this.state.output.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
+          {this.state.code && this.state.code.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
 
 
           </div>
           <div className='popup_right'>
-            {this.state.output}
+            {this.state.output && this.state.output.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
           </div>
         </div>
 
