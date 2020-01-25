@@ -57,12 +57,12 @@ export default class RunPopup extends React.Component {
 
               */}
 
-          {this.state.code && this.state.code.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
+            {this.state.code && this.state.code.map(line => <div class="codeFile"> <p>&#09;{line}</p></div> )}
 
 
           </div>
           <div className='popup_right'>
-            {this.state.output && this.state.output.map(line => <div class="codeFile"> <h1>{line}</h1></div> )}
+            {this.state.output && this.state.output.map(line => <div class="codeFile"> <p>&#09;{line}</p></div> )}
           </div>
         </div>
 

@@ -45,20 +45,35 @@ export default class AddProbs extends React.Component
     let formData = new FormData();
     formData.append("problem", problem);
     formData.append("append", true);
-    formData.append("input", this.state.input);
-    formData.append("output", this.state.output);
    
-    axios.post("http://"+ip+'/othscmsbackend/change_probs.php',{})
+    axios.post("http://"+ip+'/othscmsbackend/change_probs.php',{formData})
     .then(result => {
       console.log(result);
       this.getProblems();
     })
     .catch(error => console.log(error));
+
+    formData = new FormData();
+    formData.append("input", this.state.input);
+    axios.post("http://"+ip+'/othscmsbackend/upload_input.php',{formData})
+    .then(result => {
+      console.log("INPUT UPLOADED");
+      this.getProblems();
+    })
+    .catch(error => console.log(error));
+
+    formData = new FormData();
+    formData.append("output", this.state.output);
+    axios.post("http://"+ip+'/othscmsbackend/upload_input.php',{formData})
+    .then(result => {
+      console.log("OUTPUT UPLOADED");
+      this.getProblems();
+    })
   }
 
   deleteProblem(problem){
     console.log(problem);
-    axios.post("http://"+ip+'/othscmsbackend/change_probs.php',{
+    axios.post("http://"+ip+'/othscmsbackend/upload_output.php',{
         problem: problem,
         append: false,
     })
