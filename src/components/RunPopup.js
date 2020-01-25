@@ -10,8 +10,8 @@ export default class RunPopup extends React.Component {
         filePath: '',
         systemTime: '',
         team: '',
-        code: [],
-        output: [],
+        code: '',
+        output: '',
         description: '',
       }
       this.collectProblemData = this.collectProblemData.bind(this);

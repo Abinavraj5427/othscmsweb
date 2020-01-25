@@ -43,6 +43,7 @@ export default class Grade extends React.Component {
           systemTime: result.data.systemTime,
           team: result.data.team,
           code: result.data.code,
+          output: result.data.output,
         });
         filedPath = result.data.filePath;
         axios.post("http://"+ip+'/othscmsbackend/runSubmission.php',
